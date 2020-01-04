@@ -1,0 +1,29 @@
+variables:
+  GITLAB_CI_IMAGE_PYTHON: 'python:3'
+  GITLAB_CI_PYPI_TOX: 'tox~=3.14.0'
+  GITLAB_CI_PYPI_TWINE: 'twine~=3.1.0'
+  
+stages:
+  - static
+  - build
+  - deploy
+static:
+  stage: static
+  image: ${GITLAB_CI_IMAGE_PYTHON}
+  before_script:
+    - pip install "$GITLAB_CI_PYPI_TOX"
+  script:
+    - tox -e "flake8,isort,yapf,pylint"
+build:
+  stage: build
+  image: ${GITLAB_CI_IMAGE_PYTHON}
+  before_script:
+    - pip install "$GITLAB_CI_PYPI_TOX"
+  script:
+    - rm -rf dist
+    - tox -e "build"
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - dist
