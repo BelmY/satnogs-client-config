@@ -1,0 +1,3 @@
+include versioneer.py
+include satnogsconfig/_version.py
+include satnogsconfig/menu.yml

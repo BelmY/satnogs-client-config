@@ -1,0 +1,120 @@
+---
+_submenu_description: &submenu_description |
+  [UP], [DOWN] arrow keys to move
+  [ENTER] to select
+
+type: 'submenu'
+short_description: 'Main menu'
+description: *submenu_description
+items:
+  Basic:
+    type: 'submenu'
+    short_description: 'Basic Menu'
+    description: *submenu_description
+    items:
+      SATNOGS_API_TOKEN:
+        type: 'variablebox'
+        short_description: 'Define API token'
+        variable: 'satnogs_api_token'
+      SATNOGS_RX_DEVICE:
+        type: 'variablebox'
+        short_description: 'Define RX device'
+        variable: 'satnogs_rx_device'
+      SATNOGS_STATION_ELEV:
+        type: 'variablebox'
+        short_description: 'Define station elevation'
+        variable: 'satnogs_station_elev'
+      SATNOGS_STATION_ID:
+        type: 'variablebox'
+        short_description: 'Define station ID'
+        variable: 'satnogs_station_id'
+      SATNOGS_STATION_LAT:
+        type: 'variablebox'
+        short_description: 'Define station latitude'
+        variable: 'satnogs_station_lat'
+      SATNOGS_STATION_LON:
+        type: 'variablebox'
+        short_description: 'Define station longitude'
+        variable: 'satnogs_station_lon'
+      HAMLIB_UTILS_ROT_ENABLED:
+        type: 'variableyesno'
+        short_description: 'Enable Hamlib rotctld'
+        variable: 'hamlib_utils_rot_enabled'
+      HAMLIB_UTILS_ROT_OPTS:
+        type: 'variablebox'
+        short_description: 'Define Hamlib rotctld options'
+        variable: 'hamlib_utils_rot_opts'
+  Advanced:
+    type: 'submenu'
+    short_description: 'Advanced Menu'
+    description: *submenu_description
+    items:
+      Client:
+        type: 'submenu'
+        short_description: 'Client settings'
+        description: *submenu_description
+        items:
+          SATNOGS_API_TOKEN:
+            type: 'variablebox'
+            short_description: 'API token'
+            variable: 'satnogs_api_token'
+          SATNOGS_STATION_ELEV:
+            type: 'variablebox'
+            short_description: 'Define station elevation'
+            variable: 'satnogs_station_elev'
+          SATNOGS_STATION_ID:
+            type: 'variablebox'
+            short_description: 'Define station ID'
+            variable: 'satnogs_station_id'
+          SATNOGS_STATION_LAT:
+            type: 'variablebox'
+            short_description: 'Define station latitude'
+            variable: 'satnogs_station_lat'
+          SATNOGS_STATION_LON:
+            type: 'variablebox'
+            short_description: 'Define station longitude'
+            variable: 'satnogs_station_lon'
+      Radio:
+        type: 'submenu'
+        short_description: 'Radio settings'
+        description: *submenu_description
+        items:
+          SATNOGS_RX_DEVICE:
+            type: 'variablebox'
+            short_description: 'Define RX device'
+            variable: 'satnogs_rx_device'
+      Rotator:
+        type: 'submenu'
+        short_description: 'Rotator settings'
+        description: *submenu_description
+        items:
+          HAMLIB_UTILS_ROT_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable Hamlib rotctld'
+            variable: 'hamlib_utils_rot_enabled'
+          HAMLIB_UTILS_ROT_OPTS:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotctld options'
+            variable: 'hamlib_utils_rot_opts'
+  Show:
+    type: 'configbox'
+    short_description: 'Show configuration file'
+    title: 'SatNOGS client configuration'
+  Upgrade:
+    type: 'upgrade'
+    short_description: 'Upgrade system packages'
+  Update:
+    type: 'update'
+    short_description: 'Update configuration tool'
+  Reset:
+    type: 'resetyesno'
+    short_description: 'Reset configuration'
+    defaultno: true
+  Apply:
+    type: 'apply'
+    short_description: 'Apply configuration'
+  About:
+    type: 'msgbox'
+    short_description: 'Information about satnogs-config'
+    title: 'SatNOGS config utility'
+    message: 'satnogs-config is a tool for configuring SatNOGS client system'
