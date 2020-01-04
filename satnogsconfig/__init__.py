@@ -1,5 +1,5 @@
 """
-SatNOGS Setup module initialization
+SatNOGS Config module initialization
 """
 import sys
 
