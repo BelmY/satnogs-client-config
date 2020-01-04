@@ -5,12 +5,10 @@ import logging
 
 import yaml
 
-import satnogsconfig.settings as settings
-
 LOGGER = logging.getLogger(__name__)
 
 
-class _Config():
+class Config():
     """
     Manage configuration file
 
@@ -95,6 +93,3 @@ class _Config():
         else:
             self.config.pop(variable, None)
         self.dump_config(to_file=True)
-
-
-CONFIG = _Config(settings.CONFIG_FILE)

@@ -5,7 +5,8 @@ import sys
 
 import pkg_resources
 
-from satnogsconfig.config import CONFIG
+import satnogsconfig.settings as settings
+from satnogsconfig.config import Config
 from satnogsconfig.menu import Menu
 
 from ._version import get_versions
@@ -22,7 +23,10 @@ def main():
     SatNOGS Setup utility
     """
 
-    menu = Menu(pkg_resources.resource_stream(__name__, MENU_FILE), CONFIG)
+    menu = Menu(
+        pkg_resources.resource_stream(__name__, MENU_FILE),
+        Config(settings.CONFIG_FILE)
+    )
     try:
         menu.show()
     except KeyboardInterrupt:
