@@ -23,3 +23,7 @@ SATNOGS_SETUP_BOOTSTRAP_STAMP = os.getenv(
 SATNOGS_SETUP_INSTALL_STAMP = os.getenv(
     ENV_PREFIX + 'SATNOGS_SETUP_INSTALL_STAMP', '.installed'
 )
+CONFIG_FILE = os.getenv(
+    ENV_PREFIX + 'CONFIG_FILE',
+    str(Path.joinpath(Path.home(), '.satnogs/config.yml'))
+)

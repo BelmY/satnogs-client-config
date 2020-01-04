@@ -5,8 +5,9 @@ import logging
 
 import yaml
 
+import satnogsconfig.settings as settings
+
 LOGGER = logging.getLogger(__name__)
-CONFIG_FILE = 'config.yml'
 
 
 class _Config():
@@ -96,4 +97,4 @@ class _Config():
         self.dump_config(to_file=True)
 
 
-CONFIG = _Config(CONFIG_FILE)
+CONFIG = _Config(settings.CONFIG_FILE)
