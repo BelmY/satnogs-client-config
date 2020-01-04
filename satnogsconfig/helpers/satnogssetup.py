@@ -2,6 +2,7 @@
 satnogs-setup module
 """
 import subprocess
+import sys
 from pathlib import Path
 
 import satnogsconfig.settings as settings
@@ -40,6 +41,7 @@ class SatnogsSetup():
             ).unlink()
         except FileNotFoundError:
             pass
+        sys.exit()
 
     def upgrade_system(self):
         """
