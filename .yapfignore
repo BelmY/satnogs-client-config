@@ -1,0 +1,4 @@
+satnogsconfig/_version.py
+.tox
+build
+versioneer.py

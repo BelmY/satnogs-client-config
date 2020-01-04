@@ -1,0 +1,3 @@
+[MASTER]
+ignore=_version.py
+load-plugins=pylint.extensions.docparams
