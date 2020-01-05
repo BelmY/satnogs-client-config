@@ -13,11 +13,17 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-from satnogsconfig._version import get_versions
+import os
+import sys
+import time
 
-__version__ = get_versions()['version']
+sys.path.insert(0, os.path.abspath('.'))
 
-del get_versions
+import versioneer
+
+__version__ = versioneer.get_versions()['version']
+
+del versioneer
 
 # -- Project information -----------------------------------------------------
 
