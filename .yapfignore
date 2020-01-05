@@ -1,4 +1,5 @@
 satnogsconfig/_version.py
 .tox
 build
+docs
 versioneer.py
