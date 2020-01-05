@@ -13,15 +13,19 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import satnogsconfig
+from satnogsconfig._version import get_versions
+
+__version__ = get_versions()['version']
+
+del get_versions
 
 # -- Project information -----------------------------------------------------
 
 project = 'SatNOGS Config'
 copyright = '2020, Libre Space Foundatio'
 author = 'SatNOGS'
-version = satnogsconfig.__version__
-release = satnogsconfig.__version__
+version = __version__
+release = __version__
 
 # -- General configuration ---------------------------------------------------
 
