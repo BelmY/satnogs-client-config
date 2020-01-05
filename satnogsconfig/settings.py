@@ -6,7 +6,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+try:
+    load_dotenv()
+except EnvironmentError:
+    # XXX: Workaround for readthedocs  # pylint: disable=fixme
+    pass
 
 ENV_PREFIX = 'SATNOGS_CONFIG_'
 
