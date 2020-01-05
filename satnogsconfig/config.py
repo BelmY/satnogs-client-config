@@ -2,6 +2,7 @@
 Configuration module
 """
 import logging
+from pathlib import Path
 
 import yaml
 
@@ -46,6 +47,8 @@ class Config():
         :rtype: str
         """
         if to_file:
+            Path(self._filename
+                 ).parent.mkdir(mode=0o700, parents=True, exist_ok=True)
             with open(self._filename, 'w') as file:
                 yaml_config = yaml.dump(
                     self.config, file, default_flow_style=False

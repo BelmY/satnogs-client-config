@@ -25,9 +25,8 @@ class SatnogsSetup():
         Request bootstrapping from satnog-setup
         """
         try:
-            Path.joinpath(  # pylint: disable=no-member
-                self._satnogs_stamp_dir, settings.SATNOGS_SETUP_BOOTSTRAP_STAMP
-            ).unlink()
+            Path(self._satnogs_stamp_dir
+                 ).joinpath(settings.SATNOGS_SETUP_BOOTSTRAP_STAMP).unlink()
         except FileNotFoundError:
             pass
 
@@ -36,9 +35,8 @@ class SatnogsSetup():
         Request installation from satnogs-setup
         """
         try:
-            Path.joinpath(  # pylint: disable=no-member
-                self._satnogs_stamp_dir, settings.SATNOGS_SETUP_INSTALL_STAMP
-            ).unlink()
+            Path(self._satnogs_stamp_dir
+                 ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP).unlink()
         except FileNotFoundError:
             pass
         sys.exit()
