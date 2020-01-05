@@ -1,6 +1,12 @@
 User guide
 ==========
 
+Requirements
+------------
+
+- Python 3.4+
+
+
 Installation
 ------------
 
