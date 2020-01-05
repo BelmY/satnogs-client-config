@@ -43,7 +43,7 @@ def get_config():
     cfg.style = "pep440"
     cfg.tag_prefix = ""
     cfg.parentdir_prefix = ""
-    cfg.versionfile_source = "satnogssetup/_version.py"
+    cfg.versionfile_source = "satnogsconfig/_version.py"
     cfg.verbose = False
     return cfg
 
