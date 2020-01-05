@@ -31,11 +31,3 @@ Modules reference
 .. automodule:: satnogsconfig.menu
    :members:
    :private-members:
-
-
-:mod:`satnogsconfig.settings`
---------------------
-
-.. automodule:: satnogsconfig.settings
-   :members:
-   :private-members:
