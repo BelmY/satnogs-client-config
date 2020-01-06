@@ -40,6 +40,21 @@ build:
     when: always
     paths:
       - dist
+deploy:
+  stage: deploy
+  image: ${GITLAB_CI_IMAGE_PYTHON}
+  before_script:
+    - pip install "$GITLAB_CI_PYPI_TWINE"
+  script:
+    - rm -rf dist
+    - python setup.py bdist_wheel
+    - twine upload -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
+  only:
+    refs:
+      - tags
+    variables:
+      - $PYPI_USERNAME
+      - $PYPI_PASSWORD
 pages:
   stage: deploy
   image: ${GITLAB_CI_IMAGE_ALPINE}
