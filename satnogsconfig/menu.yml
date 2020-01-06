@@ -49,14 +49,14 @@ items:
     short_description: 'Advanced Menu'
     description: *submenu_description
     items:
-      Client:
+      Network:
         type: 'submenu'
-        short_description: 'Client settings'
+        short_description: 'Network settings'
         description: *submenu_description
         items:
           SATNOGS_API_TOKEN:
             type: 'variablebox'
-            short_description: 'API token'
+            short_description: 'Define API token'
             variable: 'satnogs_api_token'
           SATNOGS_STATION_ELEV:
             type: 'variablebox'
@@ -74,18 +74,166 @@ items:
             type: 'variablebox'
             short_description: 'Define station longitude'
             variable: 'satnogs_station_lon'
+          SATNOGS_NETWORK_API_URL:
+            type: 'variablebox'
+            short_description: 'Define network API URL'
+            variable: 'satnogs_network_api_url'
+          SATNOGS_VERIFY_SSL:
+            type: 'variableyesno'
+            short_description: 'Verify SatNOGS network SSL certificate'
+            variable: 'satnogs_verify_ssl'
       Radio:
         type: 'submenu'
         short_description: 'Radio settings'
         description: *submenu_description
         items:
+          SATNOGS_RIG_IP:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rigctld IP'
+            variable: 'satnogs_rig_ip'
+          SATNOGS_RIG_PORT:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rigctld port'
+            variable: 'satnogs_rig_port'
+          SATNOGS_DOPPLER_CORR_PER_SEC:
+            type: 'variablebox'
+            short_description: 'Define rate of doppler correction (sec)'
+            variable: 'satnogs_doppler_corr_per_sec'
+          SATNOGS_LO_OFFSET:
+            type: 'variablebox'
+            short_description: 'Define local oscillator offset'
+            variable: 'satnogs_lo_offset'
+          SATNOGS_PPM_ERROR:
+            type: 'variablebox'
+            short_description: 'Define PPM error (integer)'
+            variable: 'satnogs_ppm_error'
+          SATNOGS_IF_GAIN:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio IF Gain'
+            variable: 'satnogs_if_gain'
+          SATNOGS_RF_GAIN:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio RF Gain'
+            variable: 'satnogs_rf_gain'
+          SATNOGS_BB_GAIN:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio BB Gain'
+            variable: 'satnogs_bb_gain'
+          SATNOGS_RX_BANDWIDTH:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio RF Bandwidth (Hz)'
+            variable: 'satnogs_rx_bandwidth'
+          SATNOGS_ANTENNA:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio Antenna'
+            variable: 'satnogs_antenna'
           SATNOGS_RX_DEVICE:
             type: 'variablebox'
             short_description: 'Define RX device'
             variable: 'satnogs_rx_device'
+          SATNOGS_SOAPY_RX_DEVICE:
+            type: 'variablebox'
+            short_description: 'Define Soapy RX device'
+            variable: 'satnogs_soapy_rx_device'
+          SATNOGS_RX_SAMP_RATE:
+            type: 'variablebox'
+            short_description: 'Define RX sampling rate'
+            variable: 'satnogs_rx_samp_rate'
+          SATNOGS_DEV_ARGS:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio device arguments'
+            variable: 'satnogs_dev_args'
+          ENABLE_IQ_DUMP:
+            type: 'variableyesno'
+            short_description: 'Enable IQ dump'
+            variable: 'enable_iq_dump'
+          IQ_DUMP_FILENAME:
+            type: 'variablebox'
+            short_description: 'Define IQ dump filename'
+            variable: 'iq_dump_filename'
+          DISABLE_DECODED_DATA:
+            type: 'variableyesno'
+            short_description: 'Disable decoded data'
+            variable: 'disable_decoded_data'
       Rotator:
         type: 'submenu'
         short_description: 'Rotator settings'
+        description: *submenu_description
+        items:
+          SATNOGS_ROT_IP:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotctld IP'
+            variable: 'satnogs_rot_ip'
+          SATNOGS_ROT_PORT:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotctld port'
+            variable: 'satnogs_rot_port'
+          SATNOGS_ROT_THRESHOLD:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotctld command threshold'
+            variable: 'satnogs_rot_threshold'
+      Waterfall:
+        type: 'submenu'
+        short_description: 'Waterfall settings'
+        description: *submenu_description
+        items:
+          SATNOGS_WATERFALL_AUTORANGE:
+            type: 'variableyesno'
+            short_description: 'Enable waterfall power range adjustment'
+            variable: 'satnogs_waterfall_autorange'
+          SATNOGS_WATERFALL_MIN_VALUE:
+            type: 'variablebox'
+            short_description: 'Define waterfall minimum power'
+            variable: 'satnogs_waterfall_min_value'
+          SATNOGS_WATERFALL_MAX_VALUE:
+            type: 'variablebox'
+            short_description: 'Define Waterfall maximum power'
+            variable: 'satnogs_waterfall_max_value'
+      Scripts:
+        type: 'submenu'
+        short_description: 'Pre/post-observation scripts'
+        description: *submenu_description
+        items:
+          SATNOGS_PRE_OBSERVATION_SCRIPT:
+            type: 'variablebox'
+            short_description: 'Define pre-observation script'
+            variable: 'satnogs_pre_observation_script'
+          SATNOGS_POST_OBSERVATION_SCRIPT:
+            type: 'variablebox'
+            short_description: 'Define post-observation script'
+            variable: 'satnogs_post_observation_script'
+      Paths:
+        type: 'submenu'
+        short_description: 'Path settings'
+        description: *submenu_description
+        items:
+          SATNOGS_APP_PATH:
+            type: 'variablebox'
+            short_description: 'Define application data path'
+            variable: 'satnogs_app_path'
+          SATNOGS_OUTPUT_PATH:
+            type: 'variablebox'
+            short_description: 'Define output data path'
+            variable: 'satnogs_output_path'
+          SATNOGS_COMPLETE_OUTPUT_PATH:
+            type: 'variablebox'
+            short_description: 'Define completed data path'
+            variable: 'satnogs_complete_output_path'
+          SATNOGS_INCOMPLETE_OUTPUT_PATH:
+            type: 'variablebox'
+            short_description: 'Define incompleted data path'
+            variable: 'satnogs_incomplete_output_path'
+          SATNOGS_REMOVE_RAW_FILES:
+            type: 'variableyesno'
+            short_description: 'Remove raw files'
+            variable: 'satnogs_remove_raw_files'
+          SATNOGS_SQLITE_URL:
+            type: 'variablebox'
+            short_description: 'Define SQLite URI'
+            variable: 'satnogs_sqlite_url'
+      Hamlib:
+        type: 'submenu'
+        short_description: 'Hamlib settings'
         description: *submenu_description
         items:
           HAMLIB_UTILS_ROT_ENABLED:
@@ -96,6 +244,91 @@ items:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld options'
             variable: 'hamlib_utils_rot_opts'
+          HAMLIB_UTILS_RIG_DISABLED:
+            type: 'variableyesno'
+            short_description: 'Disable Hamlib rigctld'
+            variable: 'hamlib_utils_rig_enabled'
+          HAMLIB_UTILS_RIG_OPTS:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rigctld options'
+            variable: 'hamlib_utils_rig_opts'
+      SNMP:
+        type: 'submenu'
+        short_description: 'SNMP settings'
+        description: *submenu_description
+        items:
+          SNMPD_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable snmpd'
+            variable: 'snmpd_enabled'
+          SNMPD_AGENTADDRESS:
+            type: 'variablebox'
+            short_description: 'Define snmpd agentAddress'
+            variable: 'snmpd_agentaddress'
+          SNMPD_ROCOMMUNITY:
+            type: 'variablebox'
+            short_description: 'Define snmpd rocommunity'
+            variable: 'snmpd_rocommunity'
+
+      GPS:
+        type: 'submenu'
+        short_description: 'GPS settings'
+        description: *submenu_description
+        items:
+          GPSD_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable GPSd'
+            variable: 'gpsd_enabled'
+      Software:
+        type: 'submenu'
+        short_description: 'Software package settings'
+        description: *submenu_description
+        items:
+          APT_REPOSITORY:
+            type: 'variablebox'
+            short_description: 'Define package repository'
+            variable: 'apt_repository'
+          APT_KEY_URL:
+            type: 'variablebox'
+            short_description: 'Define package repository key URL'
+            variable: 'apt_key_url'
+          APT_KEY_ID:
+            type: 'variablebox'
+            short_description: 'Define package repository key ID'
+            variable: 'apt_key_id'
+          SATNOGS_SETUP_RELEASE_UPGRADE_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable release upgrades'
+            variable: 'satnogs_setup_release_upgrade_enabled'
+          SATNOGS_CLIENT_VERSION:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS client version'
+            variable: 'satnogs_client_version'
+          SATNOGS_CLIENT_URL:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS client Git URL'
+            variable: 'satnogs_client_url'
+          SATNOGS_RADIO_GR_SATNOGS_VERSION:
+            type: 'variablebox'
+            short_description: 'Define gr-satnogs package version'
+            variable: 'satnogs_radio_gr_satnogs_version'
+          SATNOGS_SETUP_ANSIBLE_URL:
+            type: 'variablebox'
+            short_description: 'Define Ansible Git URL'
+            variable: 'satnogs_setup_ansible_url'
+          SATNOGS_SETUP_ANSIBLE_BRANCH:
+            type: 'variablebox'
+            short_description: 'Define Ansible Git branch'
+            variable: 'satnogs_setup_ansible_branch'
+      Debug:
+        type: 'submenu'
+        short_description: 'Debug settings'
+        description: *submenu_description
+        items:
+          SATNOGS_LOG_LEVEL:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS client log level'
+            variable: 'satnogs_log_level'
   Show:
     type: 'configbox'
     short_description: 'Show configuration file'
