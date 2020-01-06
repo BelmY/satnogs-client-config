@@ -193,6 +193,7 @@ class Menu():
 
             options['choices'].append((key, short_description))
         response, item = self._dialog.menu(description, **options)
+        menu['default_item'] = item
 
         if response == Dialog.OK:
             self._stack.append(menu)
