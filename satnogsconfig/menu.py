@@ -189,7 +189,7 @@ class Menu():
             if value.get('variable'):
                 init_value = self._config.get_variable(value['variable'])
                 if init_value:
-                    short_description += ' ({})'.format(init_value)
+                    short_description += ' [{}]'.format(init_value)
 
             options['choices'].append((key, short_description))
         response, item = self._dialog.menu(description, **options)
