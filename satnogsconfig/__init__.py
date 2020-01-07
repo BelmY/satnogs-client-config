@@ -2,7 +2,6 @@
 SatNOGS Config module initialization
 """
 import sys
-from pathlib import Path
 
 import pkg_resources
 
@@ -24,9 +23,7 @@ def main():
     SatNOGS Setup utility
     """
 
-    config = Config(
-        Path(settings.CONFIG_FILE_DIR).joinpath(settings.CONFIG_FILE)
-    )
+    config = Config(settings.CONFIG_FILE)
     menu = Menu(pkg_resources.resource_stream(__name__, MENU_FILE), config)
     try:
         menu.show()
