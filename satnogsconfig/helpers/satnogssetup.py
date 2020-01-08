@@ -32,6 +32,9 @@ class SatnogsSetup():
     def set_tags(self, tags):
         """
         Set satnogs-setup tag
+
+        :param tags: Set of tags
+        :type tags: set
         """
         self._tags.update(tags)
         tags_path = Path(self._satnogs_stamp_dir
