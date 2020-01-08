@@ -16,7 +16,7 @@ class SatnogsSetup():
         """
         Class constructor
         """
-        self.tags = []
+        self.tags = set()
         self._satnogs_stamp_dir = settings.SATNOGS_SETUP_STAMP_DIR
         self._satnogs_upgrade_script = settings.SATNOGS_SETUP_UPGRADE_SCRIPT
 
@@ -29,16 +29,23 @@ class SatnogsSetup():
                  ).joinpath(settings.SATNOGS_SETUP_BOOTSTRAP_STAMP).unlink()
         except FileNotFoundError:
             pass
-
-    def request_setup(self):
-        """
-        Request installation from satnogs-setup
-        """
         try:
             Path(self._satnogs_stamp_dir
                  ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP).unlink()
         except FileNotFoundError:
             pass
+        sys.exit()
+
+    def request_setup(self):
+        """
+        Request installation from satnogs-setup
+        """
+        if self.tags:
+            tags = Path(self._satnogs_stamp_dir
+                        ).joinpath(settings.SATNOGS_SETUP_TAGS_FILE)
+            tags.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+            with tags.open(mode='w') as file:
+                file.write(','.join(self.tags))
         sys.exit()
 
     def upgrade_system(self):

@@ -4,6 +4,7 @@ Menu module
 
 import logging
 import subprocess
+import sys
 
 import yaml
 from dialog import Dialog
@@ -167,7 +168,7 @@ class Menu():
             try:
                 menu = self._stack.pop()
             except IndexError:
-                return
+                sys.exit(1)
             self._types[menu['type']](menu)
 
     def _submenu(self, menu):
@@ -207,6 +208,7 @@ class Menu():
         :type menu: dict
         """
         description = menu.get('description') or menu['short_description']
+        tags = menu.get('tags')
         options = self._get_common_options(menu)
         if not options.get('title'):
             options['title'] = menu['short_description']
@@ -216,6 +218,8 @@ class Menu():
 
         if response == Dialog.OK and value != options['init']:
             self._config.set_variable(menu['variable'], value)
+            if tags:
+                self._satnogs_setup.tags.update(tags)
 
     def _variableyesno(self, menu):
         """
@@ -225,6 +229,7 @@ class Menu():
         :type menu: dict
         """
         description = menu.get('description') or menu['short_description']
+        tags = menu.get('tags')
         options = self._get_common_options(menu)
         if not options.get('title'):
             options['title'] = menu['short_description']
@@ -237,6 +242,8 @@ class Menu():
 
         if init_value != response:
             self._config.set_variable(menu['variable'], response)
+            if tags:
+                self._satnogs_setup.tags.update(tags)
 
     def _configbox(self, menu):
         """
@@ -282,6 +289,7 @@ class Menu():
 
         if response:
             self._config.clear_config()
+            self._satnogs_setup.request_bootstrap()
 
     def _upgrade(self, _):
         """
