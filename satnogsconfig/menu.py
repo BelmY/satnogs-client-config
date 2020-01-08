@@ -219,7 +219,7 @@ class Menu():
         if response == Dialog.OK and value != options['init']:
             self._config.set_variable(menu['variable'], value)
             if tags:
-                self._satnogs_setup.tags.update(tags)
+                self._satnogs_setup.set_tags(tags)
 
     def _variableyesno(self, menu):
         """
@@ -243,7 +243,7 @@ class Menu():
         if init_value != response:
             self._config.set_variable(menu['variable'], response)
             if tags:
-                self._satnogs_setup.tags.update(tags)
+                self._satnogs_setup.set_tags(tags)
 
     def _configbox(self, menu):
         """
@@ -290,6 +290,7 @@ class Menu():
         if response:
             self._config.clear_config()
             self._satnogs_setup.request_bootstrap()
+            sys.exit()
 
     def _upgrade(self, _):
         """
@@ -304,10 +305,12 @@ class Menu():
         """
         _clear_screen()
         self._satnogs_setup.request_bootstrap()
+        sys.exit()
 
-    def _apply(self, _):
+    @staticmethod
+    def _apply(_):
         """
         Request setup from configuration management tool
         """
         _clear_screen()
-        self._satnogs_setup.request_setup()
+        sys.exit()
