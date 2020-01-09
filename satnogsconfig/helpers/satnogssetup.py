@@ -83,14 +83,36 @@ class SatnogsSetup():
         """
         Get installed SatNOGS Client Ansible version
         """
-        raise NotImplementedError
+        try:
+            result = subprocess.run(
+                'cd "$HOME/.satnogs/ansible"'
+                '&& git show -s --format=%cd --date="format:%Y%m%d%H%M"',
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True
+            )
+            return result.stdout.decode('utf-8').strip() or 'unknown'
+        except subprocess.CalledProcessError:
+            return 'unknown'
 
     @property
     def satnogs_client_version(self):
         """
         Get installed SatNOGS Client version
         """
-        raise NotImplementedError
+        try:
+            result = subprocess.run(
+                "/var/lib/satnogs/bin/pip show satnogs-client 2>/dev/null"
+                " | awk '/^Version: / { print $2 }'",
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True
+            )
+            return result.stdout.decode('utf-8').strip() or 'unknown'
+        except subprocess.CalledProcessError:
+            return 'unknown'
 
     @staticmethod
     def sync_reboot():

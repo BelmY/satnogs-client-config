@@ -49,9 +49,20 @@ class Menu():
         Class constructor
         """
         self._dialog = Dialog(autowidgetsize=True)
-        self.backtitle = backtitle
-
         self._satnogs_setup = helpers.SatnogsSetup()
+        if backtitle:
+            self.backtitle = backtitle
+        else:
+            self.backtitle = (
+                'SatNOGS client configuration | Installed: '
+                'satnogs-client-ansible-{}, '
+                'satnogs-client-{}, '
+                'gr-satnogs-unknown'
+            ).format(
+                self._satnogs_setup.satnogs_client_ansible_version,
+                self._satnogs_setup.satnogs_client_version
+            )
+
         self._types = {
             'submenu': self._submenu,
             'variablebox': self._variablebox,
