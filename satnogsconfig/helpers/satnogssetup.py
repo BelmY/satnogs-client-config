@@ -15,10 +15,8 @@ class SatnogsSetup():
         """
         Class constructor
         """
-        self._tags = set()
         self._satnogs_stamp_dir = settings.SATNOGS_SETUP_STAMP_DIR
         self._satnogs_upgrade_script = settings.SATNOGS_SETUP_UPGRADE_SCRIPT
-        self._read_tags()
 
     def request_bootstrap(self):
         """
@@ -30,9 +28,13 @@ class SatnogsSetup():
         except FileNotFoundError:
             pass
 
-    def _read_tags(self):
+    @property
+    def tags(self):
         """
         Get satnogs-setup tags
+
+        :return: Set of tags
+        :rtype: set
         """
         tags_path = Path(self._satnogs_stamp_dir
                          ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP)
@@ -40,21 +42,25 @@ class SatnogsSetup():
             with tags_path.open(mode='r') as file:
                 contents = file.read()
                 if contents:
-                    self._tags.update(contents.split(','))
+                    return set(contents.split(','))
+                return set()
+        return None
 
-    def set_tags(self, tags):
+    @tags.setter
+    def tags(self, tags):
         """
-        Set satnogs-setup tag
+        Set satnogs-setup tags
 
-        :param tags: Set of tags
-        :type tags: set
+        :param tags: list of tags
+        :type tags: list
         """
-        self._tags.update(tags)
+        new_tags = self.tags.copy()
+        new_tags.update(tags)
         tags_path = Path(self._satnogs_stamp_dir
                          ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP)
         if tags_path.exists():
             with tags_path.open(mode='w') as file:
-                file.write(','.join(self._tags))
+                file.write(','.join(new_tags))
 
     def upgrade_system(self):
         """
