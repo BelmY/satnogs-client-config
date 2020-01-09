@@ -1,6 +1,7 @@
 """
 satnogs-setup module
 """
+import os
 import subprocess
 from pathlib import Path
 
@@ -51,7 +52,7 @@ class SatnogsSetup():
         """
         Set satnogs-setup tags
 
-        :param tags: list of tags
+        :param tags: List of tags
         :type tags: list
         """
         new_tags = self.tags.copy()
@@ -65,8 +66,17 @@ class SatnogsSetup():
     def upgrade_system(self):
         """
         Upgrade system packages
+
+        :returns: Whether packages were upgraded
+        :rtype: bool
         """
-        subprocess.run(self._satnogs_upgrade_script, shell=True, check=True)
+        try:
+            subprocess.run(
+                self._satnogs_upgrade_script, shell=True, check=True
+            )
+            return True
+        except subprocess.CalledProcessError:
+            return False
 
     @property
     def satnogs_client_ansible_version(self):
@@ -81,3 +91,11 @@ class SatnogsSetup():
         Get installed SatNOGS Client version
         """
         raise NotImplementedError
+
+    @staticmethod
+    def sync_reboot():
+        """
+        Flush buffers and reboot
+        """
+        os.system('sync')
+        os.system('reboot')

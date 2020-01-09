@@ -511,6 +511,9 @@ items:
   Upgrade:
     type: 'upgrade'
     short_description: 'Upgrade system packages'
+    title: 'System reboot is required'
+    description: 'Do you want to reboot the system now?'
+    defaultno: true
   Update:
     type: 'update'
     short_description: 'Update configuration tool'
