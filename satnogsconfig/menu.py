@@ -131,7 +131,7 @@ class Menu():
         if menu.get('defaults'):
             self._defaults = menu['defaults']
 
-        options = self._defaults or {}
+        options = dict(self._defaults) or {}
 
         for key in common_options:
             if key in menu:
