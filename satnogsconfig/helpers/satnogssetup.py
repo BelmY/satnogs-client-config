@@ -18,6 +18,7 @@ class SatnogsSetup():
         self._tags = set()
         self._satnogs_stamp_dir = settings.SATNOGS_SETUP_STAMP_DIR
         self._satnogs_upgrade_script = settings.SATNOGS_SETUP_UPGRADE_SCRIPT
+        self._read_tags()
 
     def request_bootstrap(self):
         """
@@ -28,6 +29,18 @@ class SatnogsSetup():
                  ).joinpath(settings.SATNOGS_SETUP_BOOTSTRAP_STAMP).unlink()
         except FileNotFoundError:
             pass
+
+    def _read_tags(self):
+        """
+        Get satnogs-setup tags
+        """
+        tags_path = Path(self._satnogs_stamp_dir
+                         ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP)
+        if tags_path.exists():
+            with tags_path.open(mode='r') as file:
+                contents = file.read()
+                if contents:
+                    self._tags.update(contents.split(','))
 
     def set_tags(self, tags):
         """
