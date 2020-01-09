@@ -199,6 +199,9 @@ class Menu():
         if response == Dialog.OK:
             self._stack.append(menu)
             self._stack.append(menu['items'][item])
+        if response == Dialog.EXTRA:
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _variablebox(self, menu):
         """
