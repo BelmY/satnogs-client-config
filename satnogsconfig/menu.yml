@@ -11,6 +11,7 @@ cancel_label: 'Exit'
 cancel:
   type: 'exit'
   short_description: 'Are you sure you want to exit without applying configuration?'
+  title: 'Exit without applying'
   defaultno: true
 extra_button: true
 extra_label: 'Apply'
@@ -26,8 +27,11 @@ defaults:
 items:
   Basic:
     type: 'submenu'
-    short_description: 'Basic Menu'
+    short_description: 'Basic configuration options'
+    title: 'Basic configuration options'
     description: *submenu_description
+    defaults:
+      title: 'Parameter definition'
     items:
       SATNOGS_API_TOKEN:
         type: 'variablebox'
@@ -79,13 +83,16 @@ items:
           - 'hamlib_utils_config'
   Advanced:
     type: 'submenu'
-    short_description: 'Advanced Menu'
+    short_description: 'Advanced configuration options'
     description: *submenu_description
     items:
       Network:
         type: 'submenu'
         short_description: 'Network settings'
+        title: 'Network settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_API_TOKEN:
             type: 'variablebox'
@@ -132,7 +139,10 @@ items:
       Radio:
         type: 'submenu'
         short_description: 'Radio settings'
+        title: 'Radio settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_RIG_IP:
             type: 'variablebox'
@@ -239,7 +249,10 @@ items:
       Rotator:
         type: 'submenu'
         short_description: 'Rotator settings'
+        title: 'Rotator settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_ROT_IP:
             type: 'variablebox'
@@ -256,7 +269,10 @@ items:
       Waterfall:
         type: 'submenu'
         short_description: 'Waterfall settings'
+        title: 'Waterfall settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_WATERFALL_AUTORANGE:
             type: 'variableyesno'
@@ -279,7 +295,10 @@ items:
       Scripts:
         type: 'submenu'
         short_description: 'Pre/post-observation scripts'
+        title: 'Pre/post-observation scripts'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_PRE_OBSERVATION_SCRIPT:
             type: 'variablebox'
@@ -296,7 +315,10 @@ items:
       Paths:
         type: 'submenu'
         short_description: 'Path settings'
+        title: 'Path settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_APP_PATH:
             type: 'variablebox'
@@ -337,7 +359,10 @@ items:
       Hamlib:
         type: 'submenu'
         short_description: 'Hamlib settings'
+        title: 'Hamlib settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           HAMLIB_UTILS_ROT_ENABLED:
             type: 'variableyesno'
@@ -366,7 +391,10 @@ items:
       SNMP:
         type: 'submenu'
         short_description: 'SNMP settings'
+        title: 'SNMP settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SNMPD_ENABLED:
             type: 'variableyesno'
@@ -389,7 +417,10 @@ items:
       GPS:
         type: 'submenu'
         short_description: 'GPS settings'
+        title: 'GPS settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           GPSD_ENABLED:
             type: 'variableyesno'
@@ -400,7 +431,10 @@ items:
       Software:
         type: 'submenu'
         short_description: 'Software package settings'
+        title: 'Software package settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           APT_REPOSITORY:
             type: 'variablebox'
@@ -459,7 +493,10 @@ items:
       Debug:
         type: 'submenu'
         short_description: 'Debug settings'
+        title: 'Debug settings'
         description: *submenu_description
+        defaults:
+          title: 'Parameter definition'
         items:
           SATNOGS_LOG_LEVEL:
             type: 'variablebox'
