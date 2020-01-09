@@ -196,12 +196,15 @@ class Menu():
         response, item = self._dialog.menu(description, **options)
         menu['default_item'] = item
 
-        if response == Dialog.OK:
+        if response == Dialog.OK and menu.get('items'):
             self._stack.append(menu)
             self._stack.append(menu['items'][item])
-        if response == Dialog.EXTRA:
+        if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])
+        if response == Dialog.CANCEL and menu.get('cancel'):
+            self._stack.append(menu)
+            self._stack.append(menu['cancel'])
 
     def _variablebox(self, menu):
         """
@@ -223,6 +226,12 @@ class Menu():
             self._config.set_variable(menu['variable'], value)
             if tags:
                 self._satnogs_setup.set_tags(tags)
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
+        if response == Dialog.CANCEL and menu.get('cancel'):
+            self._stack.append(menu)
+            self._stack.append(menu['cancel'])
 
     def _variableyesno(self, menu):
         """
@@ -239,14 +248,21 @@ class Menu():
         init_value = self._config.get_variable(menu['variable']) or False
         options['defaultno'] = not init_value
 
-        response = (
-            self._dialog.yesno(description, **options) == Dialog.OK
-        ) or False
+        response = self._dialog.yesno(description, **options)
 
-        if init_value != response:
-            self._config.set_variable(menu['variable'], response)
-            if tags:
-                self._satnogs_setup.set_tags(tags)
+        if response == Dialog.CANCEL and menu.get('cancel'):
+            self._stack.append(menu)
+            self._stack.append(menu['cancel'])
+        else:
+            if response in [Dialog.OK, Dialog.CANCEL]:
+                value = (response == Dialog.OK) or False
+                if init_value != value:
+                    self._config.set_variable(menu['variable'], value)
+                    if tags:
+                        self._satnogs_setup.set_tags(tags)
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _configbox(self, menu):
         """
@@ -259,7 +275,12 @@ class Menu():
         if not options.get('title'):
             options['title'] = menu['short_description']
 
-        _ = self._dialog.scrollbox(self._config.dump_config(), **options)
+        response = self._dialog.scrollbox(
+            self._config.dump_config(), **options
+        )
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _msgbox(self, menu):
         """
@@ -272,7 +293,10 @@ class Menu():
         if not options.get('title'):
             options['title'] = menu['short_description']
 
-        _ = self._dialog.msgbox(menu['message'], **options)
+        response = self._dialog.msgbox(menu['message'], **options)
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _resetyesno(self, menu):
         """
@@ -286,14 +310,21 @@ class Menu():
         if not options.get('title'):
             options['title'] = menu['short_description']
 
-        response = (
-            self._dialog.yesno(description, **options) == Dialog.OK
-        ) or False
+        response = self._dialog.yesno(description, **options)
 
-        if response:
-            self._config.clear_config()
-            self._satnogs_setup.request_bootstrap()
-            sys.exit()
+        if response == Dialog.CANCEL and menu.get('cancel'):
+            self._stack.append(menu)
+            self._stack.append(menu['cancel'])
+        else:
+            if response in [Dialog.OK, Dialog.CANCEL]:
+                value = (response == Dialog.OK) or False
+                if value:
+                    self._config.clear_config()
+                    self._satnogs_setup.request_bootstrap()
+                    sys.exit()
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _upgrade(self, _):
         """
