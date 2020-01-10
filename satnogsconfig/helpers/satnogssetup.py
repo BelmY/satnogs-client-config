@@ -55,7 +55,10 @@ class SatnogsSetup():
         :param tags: List of tags
         :type tags: list
         """
-        new_tags = self.tags.copy()
+        if self.tags:
+            new_tags = self.tags.copy()
+        else:
+            new_tags = set()
         new_tags.update(tags)
         tags_path = Path(self._satnogs_stamp_dir
                          ).joinpath(settings.SATNOGS_SETUP_INSTALL_STAMP)
