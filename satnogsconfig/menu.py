@@ -389,6 +389,7 @@ class Menu():
         """
         if not self._satnogs_setup.tags \
            and self._satnogs_setup.tags is not None:
+            _clear_screen()
             sys.exit(1)
         description = menu.get('description') or menu['short_description']
         options = self._get_common_options(menu)
