@@ -436,6 +436,12 @@ items:
         defaults:
           title: 'Parameter definition'
         items:
+          EXPERIMENTAL:
+            type: 'variableyesno'
+            short_description: 'Install latest versions of all software'
+            variable: 'experimental'
+            tags:
+              - 'all'
           APT_REPOSITORY:
             type: 'variablebox'
             short_description: 'Define package repository'
