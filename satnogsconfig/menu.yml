@@ -441,7 +441,10 @@ items:
             short_description: 'Install latest versions of all software'
             variable: 'experimental'
             tags:
-              - 'all'
+              - 'apt_software'
+              - 'satnogs_setup_software'
+              - 'satnogs_client_software'
+              - 'satnogs_radio_software'
           APT_REPOSITORY:
             type: 'variablebox'
             short_description: 'Define package repository'
