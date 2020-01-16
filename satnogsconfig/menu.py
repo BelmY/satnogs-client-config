@@ -57,10 +57,11 @@ class Menu():
                 'SatNOGS client configuration | Installed: '
                 'satnogs-client-ansible-{}, '
                 'satnogs-client-{}, '
-                'gr-satnogs-unknown'
+                'gr-satnogs-{}'
             ).format(
                 self._satnogs_setup.satnogs_client_ansible_version,
-                self._satnogs_setup.satnogs_client_version
+                self._satnogs_setup.satnogs_client_version,
+                self._satnogs_setup.gr_satnogs_version
             )
 
         self._types = {

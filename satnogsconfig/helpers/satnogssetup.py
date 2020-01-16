@@ -70,7 +70,7 @@ class SatnogsSetup():
         """
         Upgrade system packages
 
-        :returns: Whether packages were upgraded
+        :return: Whether packages were upgraded
         :rtype: bool
         """
         try:
@@ -103,6 +103,9 @@ class SatnogsSetup():
     def satnogs_client_version(self):
         """
         Get installed SatNOGS Client version
+
+        :return: Version of SatNOGS Client
+        :rtype: str
         """
         try:
             result = subprocess.run(
@@ -111,6 +114,25 @@ class SatnogsSetup():
                 shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
+                check=True
+            )
+            return result.stdout.decode('utf-8').strip() or 'unknown'
+        except subprocess.CalledProcessError:
+            return 'unknown'
+
+    @property
+    def gr_satnogs_version(self):
+        """
+        Get installed gr-satnogs version
+
+        :return: Version of gr-satnogs
+        :rtype: str
+        """
+        try:
+            result = subprocess.run(
+                "dpkg-query --show -f='${Version}' gr-satnogs",
+                shell=True,
+                stdout=subprocess.PIPE,
                 check=True
             )
             return result.stdout.decode('utf-8').strip() or 'unknown'
