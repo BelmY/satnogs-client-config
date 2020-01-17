@@ -158,7 +158,7 @@ items:
               - 'satnogs_client_config'
           SATNOGS_DOPPLER_CORR_PER_SEC:
             type: 'variablebox'
-            short_description: 'Define rate of doppler correction (sec)'
+            short_description: 'Define doppler corrections per sec'
             variable: 'satnogs_doppler_corr_per_sec'
             tags:
               - 'satnogs_client_config'
