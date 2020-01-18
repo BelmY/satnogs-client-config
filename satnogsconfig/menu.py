@@ -228,7 +228,10 @@ class Menu():
         options = self._get_common_options(menu)
         if not options.get('title'):
             options['title'] = menu['short_description']
-        options['init'] = self._config.get_variable(menu['variable']) or ''
+        init_value = self._config.get_variable(menu['variable'])
+        if init_value is None:
+            init_value = ''
+        options['init'] = str(init_value)
 
         response, value = self._dialog.inputbox(description, **options)
 
