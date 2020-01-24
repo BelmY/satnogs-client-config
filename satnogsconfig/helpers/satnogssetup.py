@@ -176,11 +176,3 @@ class SatnogsSetup():
             return result.stdout.decode('utf-8').strip() or 'unknown'
         except subprocess.CalledProcessError:
             return 'unknown'
-
-    @staticmethod
-    def sync_reboot():
-        """
-        Flush buffers and reboot
-        """
-        os.system('sync')
-        os.system('reboot')
