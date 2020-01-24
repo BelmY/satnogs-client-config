@@ -26,7 +26,7 @@ class SatnogsSetup():
         Restart satnogs-setup script
 
         :param boot: Whether to bootstrap or not
-        :type boot: bool
+        :type boot: bool, optional
         """
         if boot:
             os.execlp('satnogs-setup', 'satnogs-setup', '-b')
@@ -122,6 +122,9 @@ class SatnogsSetup():
     def satnogs_client_ansible_version(self):
         """
         Get installed SatNOGS Client Ansible version
+
+        :return: Version of SatNOGS Client Ansible
+        :rtype: str
         """
         try:
             result = subprocess.run(

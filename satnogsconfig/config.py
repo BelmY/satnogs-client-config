@@ -42,7 +42,7 @@ class Config():
         Dump configuration in YAML format
 
         :param to_file: Dump to file
-        :type to_file: bool
+        :type to_file: bool, optional
         :return: YAML configuration
         :rtype: str
         """

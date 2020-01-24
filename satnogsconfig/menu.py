@@ -31,6 +31,9 @@ def _load_menu(file):
 
 
 def _clear_screen():
+    """
+    Clear screen
+    """
     subprocess.run(['clear'], check=True)
 
 
