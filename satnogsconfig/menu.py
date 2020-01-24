@@ -357,6 +357,8 @@ class Menu():
         if not self._satnogs_setup.is_applied:
             if self._ansible.run(['local.yml'], tags=tags):
                 self._satnogs_setup.is_applied = True
+            else:
+                sys.exit(1)
             if not tags:
                 self._satnogs_setup.upgrade_system()
 
