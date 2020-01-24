@@ -494,6 +494,18 @@ items:
             variable: 'satnogs_setup_ansible_branch'
             tags:
               - 'satnogs_setup_software'
+          SATNOGS_SETUP_SATNOGS_CONFIG_VERSION:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Config version'
+            variable: 'satnogs_setup_satnogs_config_version'
+            tags:
+              - 'satnogs_setup_software'
+          SATNOGS_SETUP_SATNOGS_CONFIG_URL:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Config Git URL'
+            variable: 'satnogs_setup_satnogs_config_url'
+            tags:
+              - 'satnogs_setup_software'
       Debug:
         type: 'submenu'
         short_description: 'Debug settings'
