@@ -336,8 +336,7 @@ class Menu():
                 value = (response == Dialog.OK) or False
                 if value:
                     self._config.clear_config()
-                    self._satnogs_setup.request_bootstrap()
-                    sys.exit()
+                    self._satnogs_setup.restart(boot=True)
         if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])
@@ -347,8 +346,7 @@ class Menu():
         Request tool update
         """
         _clear_screen()
-        self._satnogs_setup.request_bootstrap()
-        sys.exit()
+        self._satnogs_setup.restart(boot=True)
 
     def _apply(self, _):
         """
@@ -356,11 +354,9 @@ class Menu():
         """
         _clear_screen()
         tags = self._satnogs_setup.tags
-        if self._satnogs_setup.is_installed and tags is None:
-            sys.exit()
-        self._ansible.run(['local.yml'], tags=tags)
-        self._satnogs_setup.upgrade_system()
-        sys.exit()
+        if not self._satnogs_setup.is_installed or tags is not None:
+            self._ansible.run(['local.yml'], tags=tags)
+            self._satnogs_setup.upgrade_system()
 
     def _exit(self, menu):
         """
@@ -372,7 +368,7 @@ class Menu():
         tags = self._satnogs_setup.tags
         if self._satnogs_setup.is_installed and tags is None:
             _clear_screen()
-            sys.exit(1)
+            sys.exit()
         description = menu.get('description') or menu['short_description']
         options = self._get_common_options(menu)
         if not options.get('title'):
@@ -388,7 +384,7 @@ class Menu():
                 value = (response == Dialog.OK) or False
                 if value:
                     _clear_screen()
-                    sys.exit(1)
+                    sys.exit()
         if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])

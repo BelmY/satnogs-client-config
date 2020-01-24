@@ -3,6 +3,7 @@ satnogs-setup module
 """
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 import satnogsconfig.settings as settings
@@ -19,15 +20,18 @@ class SatnogsSetup():
         self._satnogs_stamp_dir = settings.SATNOGS_SETUP_STAMP_DIR
         self._satnogs_upgrade_script = settings.SATNOGS_SETUP_UPGRADE_SCRIPT
 
-    def request_bootstrap(self):
+    @staticmethod
+    def restart(boot=False):
         """
-        Request bootstrapping from satnog-setup
+        Restart satnogs-setup script
+
+        :param boot: Whether to bootstrap or not
+        :type boot: bool
         """
-        try:
-            Path(self._satnogs_stamp_dir
-                 ).joinpath(settings.SATNOGS_SETUP_BOOTSTRAP_STAMP).unlink()
-        except FileNotFoundError:
-            pass
+        if boot:
+            os.execlp('satnogs-setup', 'satnogs-setup', '-b')
+        else:
+            os.execlp('satnogs-setup', 'satnogs-setup')
 
     @property
     def is_installed(self):
@@ -83,17 +87,14 @@ class SatnogsSetup():
     def upgrade_system(self):
         """
         Upgrade system packages
-
-        :return: Whether packages were upgraded
-        :rtype: bool
         """
         try:
             subprocess.run(
                 self._satnogs_upgrade_script, shell=True, check=True
             )
-            return True
+            self.restart()
         except subprocess.CalledProcessError:
-            return False
+            sys.exit(1)
 
     @property
     def satnogs_client_ansible_version(self):
