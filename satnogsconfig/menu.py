@@ -74,7 +74,6 @@ class Menu():
             'variableyesno': self._variableyesno,
             'configbox': self._configbox,
             'msgbox': self._msgbox,
-            'upgrade': self._upgrade,
             'update': self._update,
             'resetyesno': self._resetyesno,
             'apply': self._apply,
@@ -342,35 +341,6 @@ class Menu():
         if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])
-
-    def _upgrade(self, menu):
-        """
-        Run system upgrade
-
-        :param menu: Menu dictionary
-        :type menu: dict
-        """
-        _clear_screen()
-        if self._satnogs_setup.upgrade_system():
-            description = menu.get('description') or menu['short_description']
-            options = self._get_common_options(menu)
-            if not options.get('title'):
-                options['title'] = menu['short_description']
-
-            response = self._dialog.yesno(description, **options)
-
-            if response == Dialog.CANCEL and menu.get('cancel'):
-                self._stack.append(menu)
-                self._stack.append(menu['cancel'])
-            else:
-                if response in [Dialog.OK, Dialog.CANCEL]:
-                    value = (response == Dialog.OK) or False
-                    if value:
-                        _clear_screen()
-                        helpers.SatnogsSetup.sync_reboot()
-            if response == Dialog.EXTRA and menu.get('extra'):
-                self._stack.append(menu)
-                self._stack.append(menu['extra'])
 
     def _update(self, _):
         """

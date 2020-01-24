@@ -464,12 +464,6 @@ items:
             variable: 'apt_key_id'
             tags:
               - 'apt_software'
-          SATNOGS_SETUP_RELEASE_UPGRADE_ENABLED:
-            type: 'variableyesno'
-            short_description: 'Enable release upgrades'
-            variable: 'satnogs_setup_release_upgrade_enabled'
-            tags:
-              - 'satnogs_setup_software'
           SATNOGS_CLIENT_VERSION:
             type: 'variablebox'
             short_description: 'Define SatNOGS client version'
@@ -518,12 +512,6 @@ items:
     type: 'configbox'
     short_description: 'Show configuration file'
     title: 'SatNOGS client configuration'
-  Upgrade:
-    type: 'upgrade'
-    short_description: 'Upgrade system packages'
-    title: 'System reboot is required'
-    description: 'Do you want to reboot the system now?'
-    defaultno: true
   Update:
     type: 'update'
     short_description: 'Update configuration tool'
