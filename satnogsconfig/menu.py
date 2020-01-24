@@ -346,6 +346,7 @@ class Menu():
         Request tool update
         """
         _clear_screen()
+        self._satnogs_setup.upgrade_system()
         self._satnogs_setup.restart(boot=True)
 
     def _apply(self, _):
