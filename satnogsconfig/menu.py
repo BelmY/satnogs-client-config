@@ -353,9 +353,9 @@ class Menu():
         Request setup from configuration management tool
         """
         _clear_screen()
-        tags = self._satnogs_setup.tags
-        if not self._satnogs_setup.is_installed or tags is not None:
-            self._ansible.run(['local.yml'], tags=tags)
+        if not self._satnogs_setup.is_applied:
+            if self._ansible.run(['local.yml'], tags=self._satnogs_setup.tags):
+                self._satnogs_setup.is_applied = True
             self._satnogs_setup.upgrade_system()
 
     def _exit(self, menu):
@@ -365,8 +365,7 @@ class Menu():
         :param menu: Menu dictionary
         :type menu: dict
         """
-        tags = self._satnogs_setup.tags
-        if self._satnogs_setup.is_installed and tags is None:
+        if self._satnogs_setup.is_applied:
             _clear_screen()
             sys.exit()
         description = menu.get('description') or menu['short_description']

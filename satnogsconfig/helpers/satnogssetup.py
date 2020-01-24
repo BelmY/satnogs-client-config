@@ -34,19 +34,42 @@ class SatnogsSetup():
             os.execlp('satnogs-setup', 'satnogs-setup')
 
     @property
-    def is_installed(self):
+    def is_applied(self):
         """
-        Check if configuration is applied at least once
+        Check whether configuration has been applied
 
-        :return: Whether configuration has been applied at least once
+        :return: Whether configuration has been applied
         :rtype: bool
         """
         install_stamp_path = Path(self._satnogs_stamp_dir).joinpath(
             settings.SATNOGS_SETUP_INSTALL_STAMP
         )
         if install_stamp_path.exists():
+            with install_stamp_path.open(mode='r') as file:
+                contents = file.read()
+                if contents:
+                    return False
             return True
         return False
+
+    @is_applied.setter
+    def is_applied(self, install):
+        """
+        Mark that configuration has been applied
+
+        :param install: Configuration has been installed
+        :type install: bool
+        """
+        install_stamp_path = Path(self._satnogs_stamp_dir).joinpath(
+            settings.SATNOGS_SETUP_INSTALL_STAMP
+        )
+        if install:
+            install_stamp_path.open(mode='w').close()
+        else:
+            try:
+                install_stamp_path.unlink()
+            except FileNotFoundError:
+                pass
 
     @property
     def tags(self):
