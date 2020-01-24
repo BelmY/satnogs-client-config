@@ -30,6 +30,21 @@ class SatnogsSetup():
             pass
 
     @property
+    def is_installed(self):
+        """
+        Check if configuration is applied at least once
+
+        :return: Whether configuration has been applied at least once
+        :rtype: bool
+        """
+        install_stamp_path = Path(self._satnogs_stamp_dir).joinpath(
+            settings.SATNOGS_SETUP_INSTALL_STAMP
+        )
+        if install_stamp_path.exists():
+            return True
+        return False
+
+    @property
     def tags(self):
         """
         Get satnogs-setup tags
@@ -44,7 +59,6 @@ class SatnogsSetup():
                 contents = file.read()
                 if contents:
                     return set(contents.split(','))
-                return set()
         return None
 
     @tags.setter
