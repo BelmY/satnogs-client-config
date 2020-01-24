@@ -115,7 +115,6 @@ class SatnogsSetup():
             subprocess.run(
                 self._satnogs_upgrade_script, shell=True, check=True
             )
-            self.restart()
         except subprocess.CalledProcessError:
             sys.exit(1)
 

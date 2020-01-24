@@ -362,6 +362,7 @@ class Menu():
                 sys.exit(1)
             if not tags:
                 self._satnogs_setup.upgrade_system()
+                self._satnogs_setup.restart()
 
     def _exit(self, menu):
         """
