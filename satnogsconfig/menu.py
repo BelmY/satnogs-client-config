@@ -10,6 +10,7 @@ import yaml
 from dialog import Dialog
 
 import satnogsconfig.helpers as helpers
+import satnogsconfig.settings as settings
 
 LOGGER = logging.getLogger(__name__)
 
@@ -44,12 +45,15 @@ class Menu():
     :param backtitle: Default dialog backtitle
     :type backtitle: str, optional
     """
+
+    # pylint: disable=too-many-instance-attributes
     def __init__(self, menu, config, backtitle=None):
         """
         Class constructor
         """
         self._dialog = Dialog(autowidgetsize=True)
         self._satnogs_setup = helpers.SatnogsSetup()
+        self._ansible = helpers.Ansible(settings.ANSIBLE_DIR)
         if backtitle:
             self.backtitle = backtitle
         else:

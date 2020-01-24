@@ -31,3 +31,7 @@ CONFIG_FILE = os.getenv(
     ENV_PREFIX + 'CONFIG_FILE',
     str(Path.home().joinpath('.satnogs', 'config.yml'))
 )
+ANSIBLE_DIR = os.getenv(
+    ENV_PREFIX + 'ANSIBLE_DIR',
+    str(Path.home().joinpath('.satnogs', 'ansible'))
+)
