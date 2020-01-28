@@ -350,7 +350,14 @@ class Menu():
         """
         _clear_screen()
         self._satnogs_setup.upgrade_system()
-        self._satnogs_setup.restart(boot=True)
+        self._ansible.pull(
+            [settings.ANSIBLE_PLAYBOOK],
+            settings.ANSIBLE_URL,
+            branch=settings.ANSIBLE_BRANCH,
+            tags=['satnogs-setup'],
+            extra_args=['-o']
+        )
+        self._satnogs_setup.restart()
 
     def _apply(self, _):
         """
@@ -359,7 +366,7 @@ class Menu():
         _clear_screen()
         tags = self._satnogs_setup.tags
         if not self._satnogs_setup.is_applied:
-            if self._ansible.run(['local.yml'], tags=tags):
+            if self._ansible.run([settings.ANSIBLE_PLAYBOOK], tags=tags):
                 self._satnogs_setup.is_applied = True
             else:
                 sys.exit(1)

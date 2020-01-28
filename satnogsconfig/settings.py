@@ -35,3 +35,9 @@ ANSIBLE_DIR = os.getenv(
     ENV_PREFIX + 'ANSIBLE_DIR',
     str(Path.home().joinpath('.satnogs', 'ansible'))
 )
+ANSIBLE_PLAYBOOK = os.getenv(ENV_PREFIX + 'ANSIBLE_PLAYBOOK', 'local.yml')
+ANSIBLE_URL = os.getenv(
+    ENV_PREFIX + 'ANSIBLE_URL', 'https://gitlab.com/librespacefoundation'
+    '/satnogs/satnogs-client-ansible.git'
+)
+ANSIBLE_BRANCH = os.getenv(ENV_PREFIX + 'ANSIBLE_BRANCH')
