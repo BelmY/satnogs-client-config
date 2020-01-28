@@ -49,16 +49,16 @@ class Ansible():
         """
         Pull and run Ansible playbook
 
+        :param playbooks: List of playbooks
+        :type playbooks: list
         :param url: Git URL to pull playbooks
         :type url: str
         :param branch: Git branch to pull playbooks
-        :type branch: str
+        :type branch: str, optional
         :param tags: List of tags
-        :type tags: list
-        :param playbooks: List of playbooks
-        :type playbooks: list
+        :type tags: list, optional
         :param extra_args: List of extra arguments to pass to Ansible
-        :type extra_args: list
+        :type extra_args: list, optional
         :return: Whether Ansible execution succeeded
         :rtype: bool
         """
