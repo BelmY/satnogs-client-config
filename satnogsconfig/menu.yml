@@ -436,6 +436,14 @@ items:
         description: *submenu_description
         defaults:
           title: 'Parameter definition'
+        cancel:
+          type: 'msgbox'
+          title: 'Software configuration changes warning'
+          message: >-
+            WARNING: If changes have been made on any software configuration
+            options, it is required to 'Apply' and then 'Update' as soon as
+            possible otherwise you may encounter unpredictable behavior
+          pop: true
         items:
           EXPERIMENTAL:
             type: 'variableyesno'
