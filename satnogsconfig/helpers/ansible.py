@@ -71,7 +71,7 @@ class Ansible():
         if playbooks:
             args += playbooks
         if branch:
-            args += ['C', branch]
+            args += ['-C', branch]
         try:
             subprocess.run(
                 ['ansible-pull', '-d', self._ansible_dir, '-U', url] + args,
