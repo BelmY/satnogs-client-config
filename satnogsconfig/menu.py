@@ -357,7 +357,7 @@ class Menu():
             tags=['satnogs-setup'],
             extra_args=['-o']
         )
-        if apt.has_updates():
+        if apt.has_updates() or apt.get_distro()['CODENAME'] != 'buster':
             self._satnogs_setup.upgrade_system()
         self._satnogs_setup.restart()
 
