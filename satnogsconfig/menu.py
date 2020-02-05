@@ -372,8 +372,6 @@ class Menu():
                 self._satnogs_setup.is_applied = True
             else:
                 sys.exit(1)
-            if not tags:
-                self._satnogs_setup.restart()
 
     def _exit(self, menu):
         """
