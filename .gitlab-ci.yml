@@ -51,7 +51,7 @@ deploy:
   image: ${GITLAB_CI_IMAGE_DEBIAN}
   before_script:
     - apt-get -y update
-    - apt-get -y install twine
+    - apt-get -y install python3-wheel twine
   script:
     - rm -rf dist
     - python3 setup.py bdist_wheel
