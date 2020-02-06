@@ -1,6 +1,6 @@
 variables:
   GITLAB_CI_IMAGE_ALPINE: 'alpine:3.9'
-  GITLAB_CI_IMAGE_DEBIAN: 'debian'
+  GITLAB_CI_IMAGE_DEBIAN: 'debian:buster'
   GITLAB_CI_APT_PACKAGES: >-
     tox
     python3-apt
