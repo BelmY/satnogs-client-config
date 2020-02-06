@@ -2,6 +2,7 @@ variables:
   GITLAB_CI_IMAGE_ALPINE: 'alpine:3.9'
   GITLAB_CI_IMAGE_DEBIAN: 'debian:buster'
   GITLAB_CI_APT_PACKAGES: >-
+    git
     tox
     python3-apt
     python3-dialog
