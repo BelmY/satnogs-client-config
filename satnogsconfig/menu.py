@@ -314,6 +314,8 @@ class Menu():
             options['title'] = menu['short_description']
 
         response = self._dialog.msgbox(menu['message'], **options)
+        if menu.get('pop'):
+            self._stack.pop()
         if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])
