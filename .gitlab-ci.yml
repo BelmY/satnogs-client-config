@@ -54,7 +54,7 @@ deploy:
     - apt-get -y install twine
   script:
     - rm -rf dist
-    - python setup.py bdist_wheel
+    - python3 setup.py bdist_wheel
     - twine upload -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
   only:
     refs:
