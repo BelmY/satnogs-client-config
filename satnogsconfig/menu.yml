@@ -18,6 +18,12 @@ extra_button: true
 extra_label: 'Apply'
 extra:
   type: 'apply'
+  title: 'Basic configuration incomplete'
+  short_description: >-
+    WARNING: Some 'Basic' configuration options are not set.
+    All basic options should be set for a functional SatNOGS Client
+    system.\n\nApply partial configuration?
+  defaultno: true
 defaults:
   ok_label: 'OK'
   cancel_label: 'Cancel'
@@ -38,36 +44,42 @@ items:
         type: 'variablebox'
         short_description: 'Define API token'
         variable: 'satnogs_api_token'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       SATNOGS_RX_DEVICE:
         type: 'variablebox'
         short_description: 'Define RX device'
         variable: 'satnogs_rx_device'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       SATNOGS_STATION_ELEV:
         type: 'variablebox'
         short_description: 'Define station elevation'
         variable: 'satnogs_station_elev'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       SATNOGS_STATION_ID:
         type: 'variablebox'
         short_description: 'Define station ID'
         variable: 'satnogs_station_id'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       SATNOGS_STATION_LAT:
         type: 'variablebox'
         short_description: 'Define station latitude'
         variable: 'satnogs_station_lat'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       SATNOGS_STATION_LON:
         type: 'variablebox'
         short_description: 'Define station longitude'
         variable: 'satnogs_station_lon'
+        mandatory: true
         tags:
           - 'satnogs_client_config'
       HAMLIB_UTILS_ROT_ENABLED:

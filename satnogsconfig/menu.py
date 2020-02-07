@@ -38,6 +38,31 @@ def _clear_screen():
     subprocess.run(['clear'], check=True)
 
 
+def _get_variables(menu, name=None, mandatory=False):
+    """
+    Get all menu variable items
+
+    :param menu: Menu dictionary
+    :type menu: dict
+    :param name: Name of menu item
+    :type name: str, optional
+    :param mandatory: Return only mandatory variables
+    :type mandatory: bool
+    :return: Menu variables dictionary
+    :rtype: dict
+    """
+    variables = {}
+    if menu['type'] == 'submenu':
+        for key, value in menu['items'].items():
+            variables.update(
+                _get_variables(value, name=key, mandatory=mandatory)
+            )
+    if menu['type'] in ['variablebox', 'variableyesno']:
+        if not mandatory or menu.get('mandatory'):
+            variables[name] = menu
+    return variables
+
+
 class Menu():
     """
     Show a menu structure based on dialog
@@ -363,13 +388,37 @@ class Menu():
             self._satnogs_setup.upgrade_system()
         self._satnogs_setup.restart()
 
-    def _apply(self, _):
+    def _apply(self, menu):
         """
         Request setup from configuration management tool
         """
         _clear_screen()
+        for value in _get_variables(self._stack[0], mandatory=True).values():
+            if self._config.get_variable(value['variable']) is None:
+                description = menu.get('description'
+                                       ) or menu['short_description']
+                options = self._get_common_options(menu)
+                if not options.get('title'):
+                    options['title'] = menu['short_description']
+
+                response = self._dialog.yesno(description, **options)
+
+                if response == Dialog.CANCEL and menu.get('cancel'):
+                    self._stack.append(menu)
+                    self._stack.append(menu['cancel'])
+                else:
+                    if response in [Dialog.OK, Dialog.CANCEL]:
+                        value = (response == Dialog.OK) or False
+                        if value:
+                            break
+                        return
+                if response == Dialog.EXTRA and menu.get('extra'):
+                    self._stack.append(menu)
+                    self._stack.append(menu['extra'])
+                break
         tags = self._satnogs_setup.tags
         if not self._satnogs_setup.is_applied:
+            _clear_screen()
             if self._ansible.run([settings.ANSIBLE_PLAYBOOK], tags=tags):
                 self._satnogs_setup.is_applied = True
             else:
