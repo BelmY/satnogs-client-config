@@ -366,6 +366,7 @@ class Menu():
             if response in [Dialog.OK, Dialog.CANCEL]:
                 value = (response == Dialog.OK) or False
                 if value:
+                    _clear_screen()
                     self._config.clear_config()
                     self._satnogs_setup.restart(boot=True)
         if response == Dialog.EXTRA and menu.get('extra'):
