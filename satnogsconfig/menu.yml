@@ -82,18 +82,6 @@ items:
         mandatory: true
         tags:
           - 'satnogs_client_config'
-      HAMLIB_UTILS_ROT_ENABLED:
-        type: 'variableyesno'
-        short_description: 'Enable Hamlib rotctld'
-        variable: 'hamlib_utils_rot_enabled'
-        tags:
-          - 'hamlib_utils_config'
-      HAMLIB_UTILS_ROT_OPTS:
-        type: 'variablebox'
-        short_description: 'Define Hamlib rotctld options'
-        variable: 'hamlib_utils_rot_opts'
-        tags:
-          - 'hamlib_utils_config'
   Advanced:
     type: 'submenu'
     short_description: 'Advanced configuration options'
