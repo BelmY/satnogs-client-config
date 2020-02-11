@@ -114,6 +114,7 @@ class Menu():
             'update': self._update,
             'resetyesno': self._resetyesno,
             'apply': self._apply,
+            'support': self._support,
             'reboot': self._reboot,
             'exit': self._exit
         }
@@ -433,6 +434,19 @@ class Menu():
                 self._satnogs_setup.is_applied = True
             else:
                 sys.exit(1)
+
+    def _support(self, _):
+        """
+        Show support information
+        """
+        _clear_screen()
+        sys.stdout.write(
+            '------------[ copy here ]------------\n' +
+            helpers.Support(self._config, self._satnogs_setup, self._ansible
+                            ).dump(indent=4) +
+            '\n------------[ copy end ]-------------\n\n'
+        )
+        input('Press Enter to continue...')
 
     def _reboot(self, menu):
         """

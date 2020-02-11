@@ -528,6 +528,9 @@ items:
             variable: 'satnogs_log_level'
             tags:
               - 'satnogs_client_config'
+      Support:
+        type: 'support'
+        short_description: 'Generate support information'
   Show:
     type: 'configbox'
     short_description: 'Show configuration file'
