@@ -31,6 +31,14 @@ def _load_menu(file):
         LOGGER.exception("Could not load YAML menu file")
 
 
+def _reboot():
+    """
+    Reboot system
+    """
+    subprocess.run(['sync'], check=True)
+    subprocess.run(['reboot'], check=True)
+
+
 def _clear_screen():
     """
     Clear screen
@@ -106,6 +114,7 @@ class Menu():
             'update': self._update,
             'resetyesno': self._resetyesno,
             'apply': self._apply,
+            'reboot': self._reboot,
             'exit': self._exit
         }
         self._stack = [
@@ -424,6 +433,32 @@ class Menu():
                 self._satnogs_setup.is_applied = True
             else:
                 sys.exit(1)
+
+    def _reboot(self, menu):
+        """
+        Reboot system
+
+        :param menu: Menu dictionary
+        :type menu: dict
+        """
+        description = menu.get('description') or menu['short_description']
+        options = self._get_common_options(menu)
+        if not options.get('title'):
+            options['title'] = menu['short_description']
+
+        response = self._dialog.yesno(description, **options)
+
+        if response == Dialog.CANCEL and menu.get('cancel'):
+            self._stack.append(menu)
+            self._stack.append(menu['cancel'])
+        else:
+            if response in [Dialog.OK, Dialog.CANCEL]:
+                value = (response == Dialog.OK) or False
+                if value:
+                    _reboot()
+        if response == Dialog.EXTRA and menu.get('extra'):
+            self._stack.append(menu)
+            self._stack.append(menu['extra'])
 
     def _exit(self, menu):
         """

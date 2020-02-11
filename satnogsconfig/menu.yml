@@ -540,6 +540,13 @@ items:
     type: 'resetyesno'
     short_description: 'Reset configuration'
     defaultno: true
+  Reboot:
+    type: 'reboot'
+    short_description: 'Reboot system'
+    description: >-
+      Are you sure you want to reboot the system?
+    title: 'System reboot'
+    defaultno: true
   About:
     type: 'msgbox'
     short_description: 'Information about satnogs-config'
