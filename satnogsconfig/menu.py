@@ -10,7 +10,6 @@ import yaml
 from dialog import Dialog
 
 import satnogsconfig.helpers as helpers
-import satnogsconfig.helpers.apt as apt
 import satnogsconfig.settings as settings
 
 LOGGER = logging.getLogger(__name__)
@@ -395,7 +394,8 @@ class Menu():
             tags=['satnogs-setup'],
             extra_args=['-o']
         )
-        if apt.has_updates() or apt.get_distro()['CODENAME'] != 'buster':
+        if helpers.apt.has_updates(
+        ) or helpers.apt.get_distro()['CODENAME'] != 'buster':
             self._satnogs_setup.upgrade_system()
         self._satnogs_setup.restart()
 

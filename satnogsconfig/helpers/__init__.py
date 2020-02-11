@@ -11,4 +11,5 @@ __all__ = [
     'GrSatnogs',
     'Ansible',
     'Support',
+    'apt',
 ]

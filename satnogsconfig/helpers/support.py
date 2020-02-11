@@ -6,8 +6,8 @@ import platform
 
 import psutil
 
-import satnogsconfig.helpers.apt as apt
 from satnogsconfig._version import get_versions
+from satnogsconfig.helpers import apt
 
 __version__ = get_versions()['version']
 
