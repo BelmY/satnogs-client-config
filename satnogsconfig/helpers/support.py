@@ -52,7 +52,7 @@ class Support():
             "state":
                 {
                     "is-applied": self._satnogs_setup.is_applied,
-                    "pending-tags": self._satnogs_setup.tags,
+                    "pending-tags": None,
                 },
             "system":
                 {
@@ -64,6 +64,11 @@ class Support():
                 },
             "configuration": self._config.config,
         }
+
+        tags = self._satnogs_setup.tags
+        if tags:
+            data['state']['pending-tags'] = list(tags)
+
         return data
 
     def dump(self, *args, **kwargs):
