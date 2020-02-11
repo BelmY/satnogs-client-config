@@ -2,6 +2,9 @@
 SatNOGS support info module
 """
 import json
+import platform
+
+import psutil
 
 import satnogsconfig.helpers.apt as apt
 from satnogsconfig._version import get_versions
@@ -50,6 +53,9 @@ class Support():
                 {
                     "distribution": apt.get_distro(),
                     "pending-updates": apt.has_updates(),
+                    "platform": dict(platform.uname()._asdict()),
+                    "memory": dict(psutil.virtual_memory()._asdict()),
+                    "disk": dict(psutil.disk_usage('/')._asdict()),
                 },
             "configuration": self._config.config,
         }
