@@ -7,6 +7,7 @@ variables:
     python3-apt
     python3-dialog
     python3-yaml
+    python3-psutil
 stages:
   - static
   - build
