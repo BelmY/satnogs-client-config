@@ -34,6 +34,11 @@ class Support():
         :return: Support information dictionary
         :rtype: dict
         """
+        config = self._config.config.copy()
+        reducted_keys = ['satnogs_api_token']
+        for key in reducted_keys:
+            if config.get(key) is not None:
+                config[key] = '[reducted]'
         data = {
             "versions":
                 {
