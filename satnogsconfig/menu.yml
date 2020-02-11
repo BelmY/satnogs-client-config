@@ -535,7 +535,6 @@ items:
     type: 'configbox'
     short_description: 'Show configuration file'
     title: 'SatNOGS client configuration'
-    no_mouse: true
   Update:
     type: 'update'
     short_description: 'Update configuration tool'
