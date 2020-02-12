@@ -397,6 +397,7 @@ class Menu():
         if helpers.apt.has_updates(
         ) or helpers.apt.get_distro()['CODENAME'] != 'buster':
             self._satnogs_setup.upgrade_system()
+        self._satnogs_setup.is_applied = False
         self._satnogs_setup.restart()
 
     def _apply(self, menu):
