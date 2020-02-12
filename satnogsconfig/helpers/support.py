@@ -62,7 +62,7 @@ class Support():
                     "memory": dict(psutil.virtual_memory()._asdict()),
                     "disk": dict(psutil.disk_usage('/')._asdict()),
                 },
-            "configuration": self._config.config,
+            "configuration": config,
         }
 
         tags = self._satnogs_setup.tags
