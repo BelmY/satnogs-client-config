@@ -441,6 +441,7 @@ class Menu():
         Show support information
         """
         _clear_screen()
+        sys.stdout.write('Generating support report. Please wait...\n')
         sys.stdout.write(
             '------------[ copy here ]------------\n' +
             helpers.Support(self._config, self._satnogs_setup, self._ansible
