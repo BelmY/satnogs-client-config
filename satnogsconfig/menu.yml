@@ -47,10 +47,17 @@ items:
         mandatory: true
         tags:
           - 'satnogs_client_config'
-      SATNOGS_RX_DEVICE:
+      SATNOGS_SOAPY_RX_DEVICE:
         type: 'variablebox'
-        short_description: 'Define RX device'
-        variable: 'satnogs_rx_device'
+        short_description: 'Define Soapy RX device'
+        variable: 'satnogs_soapy_rx_device'
+        mandatory: true
+        tags:
+          - 'satnogs_client_config'
+      SATNOGS_RX_SAMP_RATE:
+        type: 'variablebox'
+        short_description: 'Define RX sampling rate'
+        variable: 'satnogs_rx_samp_rate'
         mandatory: true
         tags:
           - 'satnogs_client_config'
@@ -169,28 +176,10 @@ items:
             variable: 'satnogs_lo_offset'
             tags:
               - 'satnogs_client_config'
-          SATNOGS_PPM_ERROR:
-            type: 'variablebox'
-            short_description: 'Define PPM error (integer)'
-            variable: 'satnogs_ppm_error'
-            tags:
-              - 'satnogs_client_config'
-          SATNOGS_IF_GAIN:
-            type: 'variablebox'
-            short_description: 'Define SatNOGS Radio IF Gain'
-            variable: 'satnogs_if_gain'
-            tags:
-              - 'satnogs_client_config'
           SATNOGS_RF_GAIN:
             type: 'variablebox'
             short_description: 'Define SatNOGS Radio RF Gain'
             variable: 'satnogs_rf_gain'
-            tags:
-              - 'satnogs_client_config'
-          SATNOGS_BB_GAIN:
-            type: 'variablebox'
-            short_description: 'Define SatNOGS Radio BB Gain'
-            variable: 'satnogs_bb_gain'
             tags:
               - 'satnogs_client_config'
           SATNOGS_RX_BANDWIDTH:
@@ -203,12 +192,6 @@ items:
             type: 'variablebox'
             short_description: 'Define SatNOGS Radio Antenna'
             variable: 'satnogs_antenna'
-            tags:
-              - 'satnogs_client_config'
-          SATNOGS_RX_DEVICE:
-            type: 'variablebox'
-            short_description: 'Define RX device'
-            variable: 'satnogs_rx_device'
             tags:
               - 'satnogs_client_config'
           SATNOGS_SOAPY_RX_DEVICE:
@@ -255,18 +238,48 @@ items:
         defaults:
           title: 'Parameter definition'
         items:
+          SATNOGS_ROT_MODEL:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotator model'
+            variable: 'satnogs_rot_model'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ROT_BAUD:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotator baud rate'
+            variable: 'satnogs_rot_baud'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_ROT_IP:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld IP'
             variable: 'satnogs_rot_ip'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_ROT_PORT:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld port'
             variable: 'satnogs_rot_port'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_ROT_THRESHOLD:
             type: 'variablebox'
-            short_description: 'Define Hamlib rotctld command threshold'
+            short_description: 'Define Hamlib rotator command threshold'
             variable: 'satnogs_rot_threshold'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ROT_FLIP:
+            type: 'variableyesno'
+            short_description: 'Enable Hamlib rotator flip'
+            variable: 'satnogs_rot_flip'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ROT_FLIP_ANGLE:
+            type: 'variablebox'
+            short_description: 'Define Hamlib rotator flip angle'
+            variable: 'satnogs_rot_flip_angle'
+            tags:
+              - 'satnogs_client_config'
       Waterfall:
         type: 'submenu'
         short_description: 'Waterfall settings'
@@ -349,12 +362,6 @@ items:
             type: 'variableyesno'
             short_description: 'Remove raw files'
             variable: 'satnogs_remove_raw_files'
-            tags:
-              - 'satnogs_client_config'
-          SATNOGS_SQLITE_URL:
-            type: 'variablebox'
-            short_description: 'Define SQLite URI'
-            variable: 'satnogs_sqlite_url'
             tags:
               - 'satnogs_client_config'
       Hamlib:
@@ -526,6 +533,12 @@ items:
             type: 'variablebox'
             short_description: 'Define SatNOGS client log level'
             variable: 'satnogs_log_level'
+            tags:
+              - 'satnogs_client_config'
+          SENTRY_DSN:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS client Sentry DSN'
+            variable: 'sentry_dsn'
             tags:
               - 'satnogs_client_config'
       Support:
