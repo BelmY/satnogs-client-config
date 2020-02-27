@@ -491,10 +491,10 @@ items:
             variable: 'satnogs_client_url'
             tags:
               - 'satnogs_client_software'
-          SATNOGS_RADIO_GR_SATNOGS_VERSION:
+          SATNOGS_RADIO_FLOWGRAPHS_VERSION:
             type: 'variablebox'
-            short_description: 'Define gr-satnogs package version'
-            variable: 'satnogs_radio_gr_satnogs_version'
+            short_description: 'Define satnogs-flowgraphs package version'
+            variable: 'satnogs_radio_flowgraphs_version'
             tags:
               - 'satnogs_radio_software'
           SATNOGS_SETUP_ANSIBLE_URL:
