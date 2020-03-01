@@ -35,10 +35,10 @@ class Support():
         :rtype: dict
         """
         config = self._config.config.copy()
-        reducted_keys = ['satnogs_api_token']
-        for key in reducted_keys:
+        redacted_keys = ['satnogs_api_token']
+        for key in redacted_keys:
             if config.get(key) is not None:
-                config[key] = '[reducted]'
+                config[key] = '[redacted]'
         data = {
             "versions":
                 {
