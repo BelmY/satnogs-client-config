@@ -208,3 +208,13 @@ class SatnogsSetup():
         :rtype: str
         """
         return get_package_version('gr-soapy')
+
+    @property
+    def gnuradio_version(self):
+        """
+        Get installed gnuradio version
+
+        :return: Version of gr-soapy
+        :rtype: str
+        """
+        return get_package_version('gnuradio')

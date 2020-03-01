@@ -50,6 +50,7 @@ class Support():
                         self._satnogs_setup.satnogs_flowgraphs_version,
                     "gr-satnogs": self._satnogs_setup.gr_satnogs_version,
                     "gr-soapy": self._satnogs_setup.gr_soapy_version,
+                    "gnuradio": self._satnogs_setup.gnuradio_version,
                     "satnogs-config": __version__,
                 },
             "state":
