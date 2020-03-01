@@ -9,6 +9,25 @@ from pathlib import Path
 import satnogsconfig.settings as settings
 
 
+def get_package_version(package_name):
+    """
+    Get installed version of the given package
+
+    :return: Version of the given package
+    :rtype: str
+    """
+    try:
+        result = subprocess.run(
+            "dpkg-query --show -f='${{Version}}' {}".format(package_name),
+            shell=True,
+            stdout=subprocess.PIPE,
+            check=True
+        )
+        return result.stdout.decode('utf-8').strip() or 'unknown'
+    except subprocess.CalledProcessError:
+        return 'unknown'
+
+
 class SatnogsSetup():
     """
     Interract with satnogs-setup
@@ -168,13 +187,4 @@ class SatnogsSetup():
         :return: Version of gr-satnogs
         :rtype: str
         """
-        try:
-            result = subprocess.run(
-                "dpkg-query --show -f='${Version}' gr-satnogs",
-                shell=True,
-                stdout=subprocess.PIPE,
-                check=True
-            )
-            return result.stdout.decode('utf-8').strip() or 'unknown'
-        except subprocess.CalledProcessError:
-            return 'unknown'
+        return get_package_version('gr-satnogs')
