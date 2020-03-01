@@ -188,3 +188,13 @@ class SatnogsSetup():
         :rtype: str
         """
         return get_package_version('gr-satnogs')
+
+    @property
+    def satnogs_flowgraphs_version(self):
+        """
+        Get installed satnogs-flowgraphs version
+
+        :return: Version of satnogs-flowgraphs
+        :rtype: str
+        """
+        return get_package_version('satnogs-flowgraphs')

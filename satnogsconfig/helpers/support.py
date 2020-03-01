@@ -46,6 +46,8 @@ class Support():
                         self._satnogs_setup.satnogs_client_version,
                     "satnogs-client-ansible":
                         self._satnogs_setup.satnogs_client_ansible_version,
+                    "satnogs-flowgraphs":
+                        self._satnogs_setup.satnogs_flowgraphs_version,
                     "gr-satnogs": self._satnogs_setup.gr_satnogs_version,
                     "satnogs-config": __version__,
                 },
