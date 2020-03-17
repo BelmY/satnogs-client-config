@@ -189,6 +189,12 @@ items:
             variable: 'satnogs_doppler_corr_per_sec'
             tags:
               - 'satnogs_client_config'
+          SATNOGS_PPM_ERROR:
+            type: 'variablebox'
+            short_description: 'Define frequency correction (ppm)'
+            variable: 'satnogs_ppm_error'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_LO_OFFSET:
             type: 'variablebox'
             short_description: 'Define local oscillator offset (Hz)'
