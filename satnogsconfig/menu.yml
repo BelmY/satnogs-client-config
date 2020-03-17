@@ -191,7 +191,7 @@ items:
               - 'satnogs_client_config'
           SATNOGS_LO_OFFSET:
             type: 'variablebox'
-            short_description: 'Define local oscillator offset'
+            short_description: 'Define local oscillator offset (Hz)'
             variable: 'satnogs_lo_offset'
             tags:
               - 'satnogs_client_config'
