@@ -150,6 +150,7 @@ class Menu():
             'help_status',
             'help_tags',
             'hline',
+            'init',
             'insecure',
             'iso_week',
             'item_help',
@@ -269,14 +270,18 @@ class Menu():
         options = self._get_common_options(menu)
         if not options.get('title'):
             options['title'] = menu['short_description']
+        default_value = options.get('init')
         init_value = self._config.get_variable(menu['variable'])
-        if init_value is None:
-            init_value = ''
-        options['init'] = str(init_value)
+        if init_value is not None:
+            options['init'] = str(init_value)
+        if options.get('init') is None:
+            options['init'] = ''
 
         response, value = self._dialog.inputbox(description, **options)
 
-        if response == Dialog.OK and value != options['init']:
+        if response == Dialog.OK and value != options.get('init'):
+            if value in (default_value, ''):
+                value = None
             self._config.set_variable(menu['variable'], value)
             if tags:
                 self._satnogs_setup.tags = tags
@@ -299,21 +304,25 @@ class Menu():
         options = self._get_common_options(menu)
         if not options.get('title'):
             options['title'] = menu['short_description']
-        init_value = self._config.get_variable(menu['variable']) or False
-        options['defaultno'] = not init_value
+        default_value = not (options.get('defaultno') or False)
+        init_value = self._config.get_variable(menu['variable'])
+        if init_value is not None:
+            options['defaultno'] = not init_value
 
         response = self._dialog.yesno(description, **options)
+        value = (response == Dialog.OK) or False
 
         if response == Dialog.CANCEL and menu.get('cancel'):
             self._stack.append(menu)
             self._stack.append(menu['cancel'])
         else:
-            if response in [Dialog.OK, Dialog.CANCEL]:
-                value = (response == Dialog.OK) or False
-                if init_value != value:
-                    self._config.set_variable(menu['variable'], value)
-                    if tags:
-                        self._satnogs_setup.tags = tags
+            if response in [Dialog.OK, Dialog.CANCEL] \
+               and value == (options.get('defaultno') or False):
+                if value == default_value:
+                    value = None
+                self._config.set_variable(menu['variable'], value)
+                if tags:
+                    self._satnogs_setup.tags = tags
         if response == Dialog.EXTRA and menu.get('extra'):
             self._stack.append(menu)
             self._stack.append(menu['extra'])

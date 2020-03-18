@@ -91,7 +91,7 @@ class Config():
         """
         if not self.config:
             self.config = {}
-        if value:
+        if value is not None:
             self.config[variable] = value
         else:
             self.config.pop(variable, None)
