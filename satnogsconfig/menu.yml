@@ -147,12 +147,14 @@ items:
             type: 'variablebox'
             short_description: 'Define network API URL'
             variable: 'satnogs_network_api_url'
+            init: 'https://network.satnogs.org/api/'
             tags:
               - 'satnogs_client_config'
           SATNOGS_VERIFY_SSL:
             type: 'variableyesno'
             short_description: 'Verify SatNOGS network SSL certificate'
             variable: 'satnogs_verify_ssl'
+            defaultno: false
             tags:
               - 'satnogs_client_config'
       Radio:
@@ -171,12 +173,14 @@ items:
             type: 'variablebox'
             short_description: 'Define Hamlib rigctld IP'
             variable: 'satnogs_rig_ip'
+            init: '127.0.0.1'
             tags:
               - 'satnogs_client_config'
           SATNOGS_RIG_PORT:
             type: 'variablebox'
             short_description: 'Define Hamlib rigctld port'
             variable: 'satnogs_rig_port'
+            init: '4532'
             tags:
               - 'satnogs_client_config'
           SATNOGS_DOPPLER_CORR_PER_SEC:
@@ -231,6 +235,7 @@ items:
             type: 'variableyesno'
             short_description: 'Enable IQ dump'
             variable: 'enable_iq_dump'
+            defaultno: true
             tags:
               - 'satnogs_client_config'
           IQ_DUMP_FILENAME:
@@ -243,6 +248,7 @@ items:
             type: 'variableyesno'
             short_description: 'Disable decoded data'
             variable: 'disable_decoded_data'
+            defaultno: true
             tags:
               - 'satnogs_client_config'
       Rotator:
@@ -261,42 +267,49 @@ items:
             type: 'variablebox'
             short_description: 'Define Hamlib rotator model'
             variable: 'satnogs_rot_model'
+            init: 'ROT_MODEL_DUMMY'
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_BAUD:
             type: 'variablebox'
             short_description: 'Define Hamlib rotator baud rate'
             variable: 'satnogs_rot_baud'
+            init: '19200'
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_IP:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld IP'
             variable: 'satnogs_rot_ip'
+            init: '127.0.0.1'
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_PORT:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld port'
             variable: 'satnogs_rot_port'
+            init: '/dev/ttyUSB0'
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_THRESHOLD:
             type: 'variablebox'
             short_description: 'Define Hamlib rotator command threshold'
             variable: 'satnogs_rot_threshold'
+            init: '4'
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_FLIP:
             type: 'variableyesno'
             short_description: 'Enable Hamlib rotator flip'
             variable: 'satnogs_rot_flip'
+            defaultno: true
             tags:
               - 'satnogs_client_config'
           SATNOGS_ROT_FLIP_ANGLE:
             type: 'variablebox'
             short_description: 'Define Hamlib rotator flip angle'
             variable: 'satnogs_rot_flip_angle'
+            init: '75'
             tags:
               - 'satnogs_client_config'
       Waterfall:
@@ -315,18 +328,21 @@ items:
             type: 'variableyesno'
             short_description: 'Enable waterfall power range adjustment'
             variable: 'satnogs_waterfall_autorange'
+            defaultno: false
             tags:
               - 'satnogs_client_config'
           SATNOGS_WATERFALL_MIN_VALUE:
             type: 'variablebox'
             short_description: 'Define waterfall minimum power'
             variable: 'satnogs_waterfall_min_value'
+            init: '-100'
             tags:
               - 'satnogs_client_config'
           SATNOGS_WATERFALL_MAX_VALUE:
             type: 'variablebox'
             short_description: 'Define Waterfall maximum power'
             variable: 'satnogs_waterfall_max_value'
+            init: '-50'
             tags:
               - 'satnogs_client_config'
       Scripts:
@@ -369,12 +385,14 @@ items:
             type: 'variablebox'
             short_description: 'Define application data path'
             variable: 'satnogs_app_path'
+            init: '/tmp/.satnogs'
             tags:
               - 'satnogs_client_config'
           SATNOGS_OUTPUT_PATH:
             type: 'variablebox'
             short_description: 'Define output data path'
             variable: 'satnogs_output_path'
+            init: '/tmp/.satnogs/data'
             tags:
               - 'satnogs_client_config'
           SATNOGS_COMPLETE_OUTPUT_PATH:
@@ -387,12 +405,14 @@ items:
             type: 'variablebox'
             short_description: 'Define incompleted data path'
             variable: 'satnogs_incomplete_output_path'
+            init: '/tmp/.satnogs/data/incomplete'
             tags:
               - 'satnogs_client_config'
           SATNOGS_REMOVE_RAW_FILES:
             type: 'variableyesno'
             short_description: 'Remove raw files'
             variable: 'satnogs_remove_raw_files'
+            defaultno: false
             tags:
               - 'satnogs_client_config'
       Hamlib:
@@ -411,6 +431,7 @@ items:
             type: 'variableyesno'
             short_description: 'Enable Hamlib rotctld'
             variable: 'hamlib_utils_rot_enabled'
+            defaultno: true
             tags:
               - 'hamlib_utils_config'
           HAMLIB_UTILS_ROT_OPTS:
@@ -423,12 +444,14 @@ items:
             type: 'variableyesno'
             short_description: 'Disable Hamlib rigctld'
             variable: 'hamlib_utils_rig_enabled'
+            defaultno: true
             tags:
               - 'hamlib_utils_config'
           HAMLIB_UTILS_RIG_OPTS:
             type: 'variablebox'
             short_description: 'Define Hamlib rigctld options'
             variable: 'hamlib_utils_rig_opts'
+            init: '-T 127.0.0.1 -m 1'
             tags:
               - 'hamlib_utils_config'
       SNMP:
@@ -447,6 +470,7 @@ items:
             type: 'variableyesno'
             short_description: 'Enable snmpd'
             variable: 'snmpd_enabled'
+            defaultno: true
             tags:
               - 'snmpd_config'
           SNMPD_AGENTADDRESS:
@@ -477,6 +501,7 @@ items:
             type: 'variableyesno'
             short_description: 'Enable GPSd'
             variable: 'gpsd_enabled'
+            defaultno: true
             tags:
               - 'gpsd_config'
       Software:
@@ -503,6 +528,7 @@ items:
             type: 'variableyesno'
             short_description: 'Install latest versions of all software'
             variable: 'experimental'
+            defaultno: true
             tags:
               - 'apt_software'
               - 'satnogs_setup_software'
@@ -584,6 +610,7 @@ items:
             type: 'variablebox'
             short_description: 'Define SatNOGS client log level'
             variable: 'satnogs_log_level'
+            init: 'WARNING'
             tags:
               - 'satnogs_client_config'
           SENTRY_DSN:
