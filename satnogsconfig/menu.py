@@ -237,12 +237,25 @@ class Menu():
         options['choices'] = []
 
         for key, value in menu['items'].items():
-            short_description = value['short_description']
+            short_description = ' {}'.format(value['short_description'])
 
-            if value.get('variable'):
-                init_value = self._config.get_variable(value['variable'])
-                if init_value:
+            if value['type'] in ['variablebox', 'variableyesno']:
+                init_value = None
+                default_value = None
+
+                if value['type'] == 'variablebox':
+                    default_value = value.get('init')
+                if value['type'] == 'variableyesno':
+                    default_value = not (value.get('defaultno') or False)
+                if value.get('variable'):
+                    init_value = self._config.get_variable(value['variable'])
+                if init_value is not None:
                     short_description += ' [{}]'.format(init_value)
+                else:
+                    if default_value is not None:
+                        short_description += ' [{}]'.format(default_value)
+                if init_value is not None and default_value != init_value:
+                    short_description = '*' + short_description[1:]
 
             options['choices'].append((key, short_description))
         response, item = self._dialog.menu(description, **options)
