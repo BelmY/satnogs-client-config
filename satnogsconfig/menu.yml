@@ -25,8 +25,8 @@ extra:
     system.\n\nApply partial configuration?
   defaultno: true
 defaults:
-  ok_label: 'OK'
-  cancel_label: 'Cancel'
+  ok_label: 'Select'
+  cancel_label: 'Back'
   exit_label: 'Exit'
   help_label: 'Help'
   no_label: 'No'
@@ -37,8 +37,12 @@ items:
     short_description: 'Basic configuration options'
     title: 'Basic configuration options'
     description: *submenu_description
+    ok_label: 'Select'
+    cancel_label: 'Back'
     defaults:
       title: 'Parameter definition'
+      ok_label: 'Save'
+      cancel_label: 'Cancel'
     items:
       SATNOGS_API_TOKEN:
         type: 'variablebox'
@@ -93,14 +97,21 @@ items:
     type: 'submenu'
     short_description: 'Advanced configuration options'
     description: *submenu_description
+    defaults:
+      ok_label: 'Select'
+      cancel_label: 'Back'
     items:
       Network:
         type: 'submenu'
         short_description: 'Network settings'
         title: 'Network settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_API_TOKEN:
             type: 'variablebox'
@@ -149,8 +160,12 @@ items:
         short_description: 'Radio settings'
         title: 'Radio settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_RIG_IP:
             type: 'variablebox'
@@ -235,8 +250,12 @@ items:
         short_description: 'Rotator settings'
         title: 'Rotator settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_ROT_MODEL:
             type: 'variablebox'
@@ -285,8 +304,12 @@ items:
         short_description: 'Waterfall settings'
         title: 'Waterfall settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_WATERFALL_AUTORANGE:
             type: 'variableyesno'
@@ -311,8 +334,12 @@ items:
         short_description: 'Pre/post-observation scripts'
         title: 'Pre/post-observation scripts'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_PRE_OBSERVATION_SCRIPT:
             type: 'variablebox'
@@ -331,8 +358,12 @@ items:
         short_description: 'Path settings'
         title: 'Path settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_APP_PATH:
             type: 'variablebox'
@@ -369,8 +400,12 @@ items:
         short_description: 'Hamlib settings'
         title: 'Hamlib settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           HAMLIB_UTILS_ROT_ENABLED:
             type: 'variableyesno'
@@ -401,8 +436,12 @@ items:
         short_description: 'SNMP settings'
         title: 'SNMP settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SNMPD_ENABLED:
             type: 'variableyesno'
@@ -427,8 +466,12 @@ items:
         short_description: 'GPS settings'
         title: 'GPS settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           GPSD_ENABLED:
             type: 'variableyesno'
@@ -441,8 +484,12 @@ items:
         short_description: 'Software package settings'
         title: 'Software package settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         cancel:
           type: 'msgbox'
           title: 'Software configuration changes warning'
@@ -526,8 +573,12 @@ items:
         short_description: 'Debug settings'
         title: 'Debug settings'
         description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
         defaults:
           title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
         items:
           SATNOGS_LOG_LEVEL:
             type: 'variablebox'
@@ -548,6 +599,7 @@ items:
     type: 'configbox'
     short_description: 'Show configuration file'
     title: 'SatNOGS client configuration'
+    exit_label: 'Back'
   Update:
     type: 'update'
     short_description: 'Update configuration tool'
@@ -567,3 +619,4 @@ items:
     short_description: 'Information about satnogs-config'
     title: 'SatNOGS config utility'
     message: 'satnogs-config is a tool for configuring SatNOGS client system'
+    ok_label: 'Back'
