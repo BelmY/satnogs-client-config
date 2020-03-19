@@ -201,6 +201,14 @@ items:
             variable: 'satnogs_lo_offset'
             tags:
               - 'satnogs_client_config'
+          SATNOGS_GAIN_MODE:
+            type: 'variablebox'
+            short_description: |-
+              Define SatNOGS Radio Gain mode (Overall, Settings Field)
+            variable: 'satnogs_gain_mode'
+            init: 'Overall'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_RF_GAIN:
             type: 'variablebox'
             short_description: 'Define SatNOGS Radio RF Gain'
@@ -235,6 +243,39 @@ items:
             type: 'variablebox'
             short_description: 'Define SatNOGS Radio device arguments'
             variable: 'satnogs_dev_args'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_STREAM_ARGS:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio stream arguments'
+            variable: 'satnogs_stream_args'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_TUNE_ARGS:
+            type: 'variablebox'
+            short_description: 'Define SatNOGS Radio tune arguments'
+            variable: 'satnogs_tune_args'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_OTHER_SETTINGS:
+            type: 'variablebox'
+            short_description: |-
+              Define SatNOGS Radio other settings field options
+            variable: 'satnogs_other_settings'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_DC_REMOVAL:
+            type: 'variableyesno'
+            short_description: 'Enable automatic DC removal'
+            variable: 'satnogs_dc_removal'
+            defaultno: false
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_BB_FREQ:
+            type: 'variablebox'
+            short_description: |-
+              Define SatNOGS Radio baseband frequency correction
+            variable: 'satnogs_bb_freq'
             tags:
               - 'satnogs_client_config'
           ENABLE_IQ_DUMP:
