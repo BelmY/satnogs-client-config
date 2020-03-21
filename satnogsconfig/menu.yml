@@ -58,6 +58,13 @@ items:
         mandatory: true
         tags:
           - 'satnogs_client_config'
+      SATNOGS_ANTENNA:
+        type: 'variablebox'
+        short_description: 'Define SatNOGS Radio Antenna'
+        variable: 'satnogs_antenna'
+        mandatory: true
+        tags:
+          - 'satnogs_client_config'
       SATNOGS_RX_SAMP_RATE:
         type: 'variablebox'
         short_description: 'Define RX sampling rate'
