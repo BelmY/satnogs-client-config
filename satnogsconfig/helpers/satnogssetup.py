@@ -148,7 +148,8 @@ class SatnogsSetup():
         try:
             result = subprocess.run(
                 'cd "$HOME/.satnogs/ansible"'
-                '&& git show -s --format=%cd --date="format:%Y%m%d%H%M"',
+                '&& TZ=UTC '
+                'git show -s --format=%cd --date="format-local:%Y%m%d%H%M"',
                 shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
