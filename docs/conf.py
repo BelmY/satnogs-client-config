@@ -28,7 +28,7 @@ del versioneer
 # -- Project information -----------------------------------------------------
 
 project = 'SatNOGS Config'
-copyright = '2020, Libre Space Foundatio'
+copyright = '2020, Libre Space Foundation'
 author = 'SatNOGS'
 version = __version__
 release = __version__
