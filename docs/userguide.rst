@@ -5,10 +5,23 @@ Requirements
 ------------
 
 - Python 3.4+
+- libapt 1.8+ Python bindings
+- lsb-release 10+
 
 
 Installation
 ------------
+
+Debian
+^^^^^^
+
+To install the required dependencies in Debian run::
+
+  $ apt-get install python3-apt lsb-release
+
+
+SatNOGS Config
+^^^^^^^^^^^^^^
 
 To install SatNOGS Config run::
 
