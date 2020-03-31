@@ -61,6 +61,30 @@ Automation
 ----------
 
 ``tox`` is used to automate development tasks.
+To install ``tox`` run::
+
+  $ pip install tox
+
 To execute the default list of tasks run::
 
   $ tox
+
+
+Environments
+^^^^^^^^^^^^
+
+The following ``tox`` environments are available:
+
+  * ``flake8`` - Check code for common errors, coding style and complexity
+  * ``isort`` - Check code for correct imports order
+  * ``isort-apply`` - Sort imports
+  * ``yapf`` - Check code for correct formatting
+  * ``yapf-apply`` - Reformat source code
+  * ``pylint`` - Execute static code analysis
+  * ``build`` - Build source and binary distributions
+  * ``upload`` - Upload source and binary distributions to PyPI
+  * ``docs`` - Build documentation
+
+To execute a single environment run::
+
+  $ tox -e <environment>
