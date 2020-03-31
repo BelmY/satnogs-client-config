@@ -40,6 +40,11 @@ release = __version__
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 autodoc_mock_imports = ['apt', 'lsb_release']
+autodoc_default_options = {
+    'members': True,
+    'private-members': True,
+    'undoc-members': True
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
