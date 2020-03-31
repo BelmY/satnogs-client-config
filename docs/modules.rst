@@ -10,7 +10,7 @@ Modules reference
 
 
 :mod:`satnogsconfig.config`
---------------------
+---------------------------
 
 .. automodule:: satnogsconfig.config
    :members:
@@ -18,7 +18,7 @@ Modules reference
 
 
 :mod:`satnogsconfig.helpers`
---------------------
+----------------------------
 
 .. automodule:: satnogsconfig.helpers
    :members:
