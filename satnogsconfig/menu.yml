@@ -331,13 +331,6 @@ items:
             init: '19200'
             tags:
               - 'satnogs_client_config'
-          SATNOGS_ROT_IP:
-            type: 'variablebox'
-            short_description: 'Define Hamlib rotctld IP'
-            variable: 'satnogs_rot_ip'
-            init: '127.0.0.1'
-            tags:
-              - 'satnogs_client_config'
           SATNOGS_ROT_PORT:
             type: 'variablebox'
             short_description: 'Define Hamlib rotctld port'
