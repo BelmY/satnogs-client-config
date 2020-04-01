@@ -664,6 +664,14 @@ items:
             type: 'variablebox'
             short_description: 'Define SatNOGS client Sentry DSN'
             variable: 'sentry_dsn'
+            init: 'd50342fb75aa8f3945e2f846b77a0cdb7c7d2275'
+            tags:
+              - 'satnogs_client_config'
+          SENTRY_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable SatNOGS client Sentry error monitoring'
+            variable: 'sentry_enabled'
+            defaultno: true
             tags:
               - 'satnogs_client_config'
       Support:
