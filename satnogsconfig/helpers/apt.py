@@ -15,7 +15,7 @@ def has_updates():
     cache = apt.Cache()
     cache.update()
     cache.open(None)
-    cache.upgrade(dist_upgrade=True)
+    cache.upgrade()
     if cache.get_changes():
         return True
     return False
