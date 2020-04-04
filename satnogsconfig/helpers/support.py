@@ -3,6 +3,7 @@ SatNOGS support info module
 """
 import json
 import platform
+from datetime import datetime, timezone
 
 import psutil
 
@@ -60,6 +61,7 @@ class Support():
                 },
             "system":
                 {
+                    "date": datetime.now(timezone.utc).isoformat(),
                     "distribution": apt.get_distro(),
                     "pending-updates": apt.has_updates(),
                     "platform": dict(platform.uname()._asdict()),
