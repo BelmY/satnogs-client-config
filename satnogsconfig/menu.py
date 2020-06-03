@@ -90,19 +90,7 @@ class Menu():
         self._dialog = Dialog(autowidgetsize=True)
         self._satnogs_setup = helpers.SatnogsSetup()
         self._ansible = helpers.Ansible(settings.ANSIBLE_DIR)
-        if backtitle:
-            self.backtitle = backtitle
-        else:
-            self.backtitle = (
-                'SatNOGS client configuration | Installed: '
-                'satnogs-client-ansible-{}, '
-                'satnogs-client-{}, '
-                'satnogs-flowgraphs-{}'
-            ).format(
-                self._satnogs_setup.satnogs_client_ansible_version,
-                self._satnogs_setup.satnogs_client_version,
-                self._satnogs_setup.satnogs_flowgraphs_version
-            )
+        self._set_default_backtitle(backtitle=backtitle)
 
         self._types = {
             'submenu': self._submenu,
@@ -122,6 +110,28 @@ class Menu():
         ]
         self._config = config
         self._defaults = None
+
+    def _set_default_backtitle(self, backtitle=None):
+        """
+        Set backtitle of menu
+
+        :param backtitle: Menu backtitle
+        :type backtitle: str
+        """
+
+        if backtitle:
+            self.backtitle = backtitle
+        else:
+            self.backtitle = (
+                'SatNOGS client configuration | Installed: '
+                'satnogs-client-ansible-{}, '
+                'satnogs-client-{}, '
+                'satnogs-flowgraphs-{}'
+            ).format(
+                self._satnogs_setup.satnogs_client_ansible_version,
+                self._satnogs_setup.satnogs_client_version,
+                self._satnogs_setup.satnogs_flowgraphs_version
+            )
 
     def _get_common_options(self, menu):
         """
@@ -452,6 +462,7 @@ class Menu():
             _clear_screen()
             if self._ansible.run([settings.ANSIBLE_PLAYBOOK], tags=tags):
                 self._satnogs_setup.is_applied = True
+                self._set_default_backtitle()
             else:
                 sys.exit(1)
 
