@@ -214,6 +214,9 @@ class Menu():
         if response == Dialog.CANCEL and menu.get('cancel'):
             self._stack.append(menu)
             self._stack.append(menu['cancel'])
+        if response == Dialog.ESC and menu.get('esc'):
+            self._stack.append(menu)
+            self._stack.append(menu['esc'])
 
     @property
     def backtitle(self):
