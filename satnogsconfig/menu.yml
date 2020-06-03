@@ -14,6 +14,12 @@ cancel:
     Are you sure you want to exit without applying configuration?
   title: 'Exit without applying'
   defaultno: true
+esc:
+  type: 'exit'
+  short_description: >-
+    Are you sure you want to exit without applying configuration?
+  title: 'Exit without applying'
+  defaultno: true
 extra_button: true
 extra_label: 'Apply'
 extra:
