@@ -163,6 +163,20 @@ items:
             init: 'https://network.satnogs.org/api/'
             tags:
               - 'satnogs_client_config'
+          SATNOGS_NETWORK_API_QUERY_INTERVAL:
+            type: 'variablebox'
+            short_description: 'Define network API query interval'
+            variable: 'satnogs_network_api_query_interval'
+            init: '60'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_NETWORK_API_POST_INTERVAL:
+            type: 'variablebox'
+            short_description: 'Define network API post interval'
+            variable: 'satnogs_network_api_post_interval'
+            init: '180'
+            tags:
+              - 'satnogs_client_config'
           SATNOGS_VERIFY_SSL:
             type: 'variableyesno'
             short_description: 'Verify SatNOGS network SSL certificate'
