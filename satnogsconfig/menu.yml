@@ -412,6 +412,45 @@ items:
             init: '-50'
             tags:
               - 'satnogs_client_config'
+      Artifacts:
+        type: 'submenu'
+        short_description: 'Artifacts settings'
+        title: 'Artifacts settings'
+        description: *submenu_description
+        ok_label: 'Select'
+        cancel_label: 'Back'
+        defaults:
+          title: 'Parameter definition'
+          ok_label: 'Save'
+          cancel_label: 'Cancel'
+        items:
+          SATNOGS_ARTIFACTS_ENABLED:
+            type: 'variableyesno'
+            short_description: 'Enable uploading of artifacts'
+            variable: 'satnogs_artifacts_enabled'
+            defaultno: true
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ARTIFACTS_API_URL:
+            type: 'variablebox'
+            short_description: 'Define artifacts server API URL'
+            variable: 'satnogs_artifacts_api_url'
+            init: 'https://db.satnogs.org/api/'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ARTIFACTS_API_POST_INTERVAL:
+            type: 'variablebox'
+            short_description: 'Define artifacts server API post interval'
+            variable: 'satnogs_artifacts_api_post_interval'
+            init: '180'
+            tags:
+              - 'satnogs_client_config'
+          SATNOGS_ARTIFACTS_API_TOKEN:
+            type: 'variablebox'
+            short_description: 'Define artifacts server API token'
+            variable: 'satnogs_artifacts_api_token'
+            tags:
+              - 'satnogs_client_config'
       Scripts:
         type: 'submenu'
         short_description: 'Pre/post-observation scripts'
