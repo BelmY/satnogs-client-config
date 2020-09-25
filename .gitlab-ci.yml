@@ -12,16 +12,22 @@ stages:
   - static
   - build
   - deploy
+
+# 'static' stage
 static:
   stage: static
+  needs: []
   image: ${GITLAB_CI_IMAGE_DEBIAN}
   before_script:
     - apt-get -y update
     - apt-get -y install $GITLAB_CI_APT_PACKAGES
   script:
     - tox -e "flake8,isort,yapf,pylint,yamllint"
+
+# 'build' stage
 docs:
   stage: build
+  needs: []
   image: ${GITLAB_CI_IMAGE_DEBIAN}
   before_script:
     - apt-get -y update
@@ -36,6 +42,7 @@ docs:
       - docs/_build/html
 build:
   stage: build
+  needs: []
   image: ${GITLAB_CI_IMAGE_DEBIAN}
   before_script:
     - apt-get -y update
@@ -48,6 +55,8 @@ build:
     when: always
     paths:
       - dist
+
+# 'deploy' stage
 deploy:
   stage: deploy
   image: ${GITLAB_CI_IMAGE_DEBIAN}
