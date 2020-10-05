@@ -1,0 +1,6 @@
+# This is a generated file; DO NOT EDIT!
+#
+# Please edit 'setup.cfg' to add top-level extra dependencies and use
+# './contrib/refresh-requirements.sh to regenerate this file
+-r requirements.txt
+
