@@ -8,6 +8,7 @@ variables:
     python3-psutil
 stages:
   - static
+  - test
   - build
   - deploy
   - security
@@ -54,6 +55,17 @@ build:
     when: always
     paths:
       - dist
+
+# 'test' stage
+test:
+  stage: test
+  needs: []
+  image: ${GITLAB_CI_IMAGE_DEBIAN}
+  before_script:
+    - apt-get -y update
+    - apt-get -y install $GITLAB_CI_APT_PACKAGES
+  script:
+    - tox -e "deps"
 
 # 'deploy' stage
 deploy:
