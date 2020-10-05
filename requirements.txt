@@ -3,7 +3,7 @@
 # Please edit 'setup.cfg' to add top-level dependencies and use
 # './contrib/refresh-requirements.sh to regenerate this file
 
-psutil==5.7.2
+psutil==5.5.1
 python-dotenv==0.14.0
 pythondialog==3.5.1
 PyYAML==5.3.1
