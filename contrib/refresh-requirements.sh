@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-EXCLUDE_REGEXP="^\\(pkg-resources\\|satnogs-config\\)"
+EXCLUDE_REGEXP="^\\(pkg-resources\\|pip\\|wheel\\|satnogs-config\\)"
 VIRTUALENV_DIR=$(mktemp -d)
 PIP_COMMAND="$VIRTUALENV_DIR/bin/pip"
 
@@ -35,7 +35,7 @@ cat << EOF > requirements.txt
 # './contrib/refresh-requirements.sh to regenerate this file
 
 EOF
-"$PIP_COMMAND" freeze | grep -v "$EXCLUDE_REGEXP" >> requirements.txt
+"$PIP_COMMAND" freeze --all | grep -v "$EXCLUDE_REGEXP" >> requirements.txt
 
 # Install development package with dependencies
 "$PIP_COMMAND" install --no-cache-dir --use-feature=2020-resolver .[dev]

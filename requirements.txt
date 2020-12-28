@@ -7,3 +7,4 @@ psutil==5.5.1
 python-dotenv==0.14.0
 pythondialog==3.5.1
 PyYAML==5.3.1
+setuptools==50.3.2
