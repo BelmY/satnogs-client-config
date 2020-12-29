@@ -1,0 +1,13 @@
+---
+version: '2'
+formats:
+  - 'epub'
+  - 'pdf'
+python:
+  version: '3.8'
+  install:
+    - path: '.'
+    - requirements: 'requirements.txt'
+    - requirements: 'docs/requirements.txt'
+build:
+  image: 'latest'
